@@ -116,7 +116,7 @@ const blogPosts = [
   {
     slug: 'building-a-writing-habit',
     title: 'Building a Writing Habit',
-    excerpt: 'Practical strategies for showing up to the blank page every day, even when inspiration doesn't.',
+    excerpt: "Practical strategies for showing up to the blank page every day, even when inspiration doesnt.",
     category: 'Writing',
     date: '2026-03-22',
     readTime: '5 min read',
