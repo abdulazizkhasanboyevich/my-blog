@@ -1,12 +1,12 @@
 const blogPosts = [
   {
     slug: 'finding-clarity-in-code',
-    title: 'Finding Clarity in Code',
-    excerpt: 'How simplifying your mental model of a problem can lead to cleaner, more maintainable solutions.',
+    title: 'Vibe-Coding orqali dastlabki website!',
+    excerpt: 'Claude, Vercel, Github kabi toollar orqali professional website yaratish',
     category: 'Development',
     date: '2026-05-28',
-    readTime: '6 min read',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80',
+    readTime: '5 min read',
+    image: 'https://miro.medium.com/0*vOaWDgTmVpMfi9ws',
     content: `
       <p>We've all been there — staring at a tangled mess of logic, convinced the solution needs to be complex because the problem feels complex. But more often than not, the clearest code comes from the simplest mental model.</p>
 
