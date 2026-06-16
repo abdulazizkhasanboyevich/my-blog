@@ -2,6 +2,7 @@ backend:
   name: github
   repo: abdulazizkhasanboyevich/my-blog
   branch: main
+  base_url: https://poetic-vacherin-b7367e.netlify.app
 
 media_folder: images
 public_folder: images
@@ -18,3 +19,9 @@ collections:
       - { label: Qisqa tavsif, name: excerpt, widget: text }
       - { label: Rasm, name: image, widget: image }
       - { label: Matn, name: body, widget: markdown }
+
+backend:
+  name: github
+  repo: abdulazizkhasanboyevich/my-blog
+  branch: main
+  base_url: https://poetic-vacherin-b7367e.netlify.app
