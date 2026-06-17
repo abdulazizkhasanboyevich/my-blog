@@ -1,7 +1,7 @@
 const blogPosts = [
   {
     slug: 'ai-davri',
-    title: 'AI era',
+    title: 'Sun\'iy intellekt',
     excerpt: 'Jadallashib borayotgan AI davrida ish bozorida raqobatbardosh bo\'lish',
     category: 'IT',
     date: '2026-06-17',
