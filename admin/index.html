@@ -6,409 +6,248 @@
   <title>Texno Blog — Admin Panel</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
-      min-height: 100vh;
-    }
-
-    #login-screen {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
-
-    .login-box {
-      background: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 16px;
-      padding: 48px 40px;
-      width: 100%;
-      max-width: 400px;
-      text-align: center;
-    }
-
+    #login-screen { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+    .login-box { background: #1e293b; border: 1px solid #334155; border-radius: 16px; padding: 48px 40px; width: 100%; max-width: 420px; text-align: center; }
     .login-box h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; color: #f1f5f9; }
-    .login-box p { color: #94a3b8; margin-bottom: 32px; font-size: 14px; }
-
-    .login-box input {
-      width: 100%;
-      padding: 12px 16px;
-      background: #0f172a;
-      border: 1px solid #334155;
-      border-radius: 8px;
-      color: #f1f5f9;
-      font-size: 16px;
-      margin-bottom: 16px;
-      outline: none;
-    }
-
+    .login-box p { color: #94a3b8; margin-bottom: 24px; font-size: 14px; }
+    .login-box input { width: 100%; padding: 12px 16px; background: #0f172a; border: 1px solid #334155; border-radius: 8px; color: #f1f5f9; font-size: 15px; margin-bottom: 12px; outline: none; }
     .login-box input:focus { border-color: #6366f1; }
-
-    .btn-primary {
-      width: 100%;
-      padding: 12px;
-      background: #6366f1;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
+    .btn-primary { width: 100%; padding: 12px; background: #6366f1; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; }
     .btn-primary:hover { background: #4f46e5; }
     .error-msg { color: #f87171; font-size: 14px; margin-top: 12px; display: none; }
+    .token-hint { font-size: 12px; color: #64748b; margin-bottom: 4px; text-align: left; }
 
     #admin-panel { display: none; }
-
-    header {
-      background: #1e293b;
-      border-bottom: 1px solid #334155;
-      padding: 16px 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
+    header { background: #1e293b; border-bottom: 1px solid #334155; padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; }
     header h1 { font-size: 18px; font-weight: 700; color: #6366f1; }
-
-    .logout-btn {
-      padding: 8px 16px;
-      background: transparent;
-      border: 1px solid #475569;
-      border-radius: 8px;
-      color: #94a3b8;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
+    .logout-btn { padding: 8px 16px; background: transparent; border: 1px solid #475569; border-radius: 8px; color: #94a3b8; cursor: pointer; font-size: 14px; }
     .logout-btn:hover { border-color: #f87171; color: #f87171; }
 
     .container { max-width: 900px; margin: 0 auto; padding: 32px 24px; }
     .section-title { font-size: 22px; font-weight: 700; margin-bottom: 24px; color: #f1f5f9; }
 
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
     .form-group { display: flex; flex-direction: column; gap: 6px; }
     .form-group.full { grid-column: 1 / -1; }
 
-    label {
-      font-size: 13px;
-      font-weight: 600;
-      color: #94a3b8;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
+    label { font-size: 13px; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+    .hint { font-size: 12px; color: #64748b; margin-top: 4px; }
 
-    input[type="text"],
-    input[type="date"],
-    textarea {
-      padding: 10px 14px;
-      background: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 8px;
-      color: #f1f5f9;
-      font-size: 15px;
-      outline: none;
-      font-family: inherit;
+    input[type="text"], input[type="date"], textarea {
+      padding: 10px 14px; background: #1e293b; border: 1px solid #334155;
+      border-radius: 8px; color: #f1f5f9; font-size: 15px; outline: none; font-family: inherit;
     }
-
     input:focus, textarea:focus { border-color: #6366f1; }
+    textarea { resize: vertical; min-height: 220px; line-height: 1.6; }
 
-    textarea { resize: vertical; min-height: 200px; line-height: 1.6; }
-
-    .hint {
-      font-size: 12px;
-      color: #64748b;
-      margin-top: 4px;
+    .publish-btn {
+      width: 100%; padding: 16px; background: #6366f1; color: white;
+      border: none; border-radius: 10px; font-size: 17px; font-weight: 700;
+      cursor: pointer; margin-top: 8px; transition: all 0.2s;
     }
+    .publish-btn:hover { background: #4f46e5; transform: translateY(-1px); }
+    .publish-btn:disabled { background: #334155; cursor: not-allowed; transform: none; }
 
-    .generate-btn {
-      width: 100%;
-      padding: 14px;
-      background: #6366f1;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      margin-top: 8px;
-    }
+    /* STATUS */
+    .status-box { display: none; margin-top: 20px; padding: 16px 20px; border-radius: 10px; font-size: 15px; font-weight: 500; }
+    .status-loading { background: #1e3a5f; border: 1px solid #3b82f6; color: #93c5fd; }
+    .status-success { background: #064e3b; border: 1px solid #10b981; color: #10b981; }
+    .status-error { background: #450a0a; border: 1px solid #f87171; color: #f87171; }
 
-    .generate-btn:hover { background: #4f46e5; }
+    .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid #93c5fd; border-top-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite; margin-right: 8px; vertical-align: middle; }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
-    #output-section { display: none; margin-top: 32px; }
-
-    .output-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 12px;
-    }
-
-    .output-title { font-size: 16px; font-weight: 700; color: #f1f5f9; }
-
-    .copy-btn {
-      padding: 8px 20px;
-      background: #10b981;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .copy-btn:hover { background: #059669; }
-    .copy-btn.copied { background: #6366f1; }
-
-    #output-code {
-      width: 100%;
-      min-height: 300px;
-      padding: 20px;
-      background: #0f172a;
-      border: 1px solid #334155;
-      border-radius: 10px;
-      color: #a5f3fc;
-      font-family: 'Courier New', monospace;
-      font-size: 13px;
-      line-height: 1.7;
-      resize: vertical;
-    }
-
-    .instructions {
-      margin-top: 24px;
-      padding: 20px;
-      background: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 10px;
-      border-left: 4px solid #6366f1;
-    }
-
-    .instructions h3 { font-size: 15px; font-weight: 700; margin-bottom: 12px; color: #f1f5f9; }
-    .instructions ol { padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
-    .instructions li { font-size: 14px; color: #94a3b8; line-height: 1.6; }
-    .instructions code { background: #0f172a; padding: 2px 6px; border-radius: 4px; color: #a5f3fc; font-size: 13px; }
-
-    .success-msg {
-      display: none;
-      padding: 12px 16px;
-      background: #064e3b;
-      border: 1px solid #10b981;
-      border-radius: 8px;
-      color: #10b981;
-      font-size: 14px;
-      margin-top: 12px;
-    }
-
-    @media (max-width: 640px) {
-      .form-grid { grid-template-columns: 1fr; }
-      header { padding: 16px; }
-      .container { padding: 20px 16px; }
-    }
+    @media (max-width: 640px) { .form-grid { grid-template-columns: 1fr; } header { padding: 16px; } .container { padding: 20px 16px; } }
   </style>
 </head>
 <body>
 
-  <!-- LOGIN -->
-  <div id="login-screen">
-    <div class="login-box">
-      <h1>🔐 Admin Panel</h1>
-      <p>Texno Blog boshqaruv paneli</p>
-      <input type="password" id="password-input" placeholder="Parolni kiriting..." onkeydown="if(event.key==='Enter') login()">
-      <button class="btn-primary" onclick="login()">Kirish</button>
-      <p class="error-msg" id="error-msg">❌ Parol noto'g'ri!</p>
-    </div>
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <h1>🔐 Admin Panel</h1>
+    <p>Texno Blog boshqaruv paneli</p>
+    <input type="password" id="admin-pass" placeholder="Admin paroli..." onkeydown="if(event.key==='Enter') login()">
+    <p class="token-hint">GitHub Personal Access Token:</p>
+    <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxx..." onkeydown="if(event.key==='Enter') login()">
+    <button class="btn-primary" onclick="login()">Kirish</button>
+    <p class="error-msg" id="error-msg">❌ Parol noto'g'ri!</p>
   </div>
+</div>
 
-  <!-- ADMIN PANEL -->
-  <div id="admin-panel">
-    <header>
-      <h1>⚡ Texno Blog Admin</h1>
-      <button class="logout-btn" onclick="logout()">Chiqish</button>
-    </header>
+<!-- ADMIN PANEL -->
+<div id="admin-panel">
+  <header>
+    <h1>⚡ Texno Blog Admin</h1>
+    <button class="logout-btn" onclick="logout()">Chiqish</button>
+  </header>
 
-    <div class="container">
-      <h2 class="section-title">✍️ Yangi post yaratish</h2>
+  <div class="container">
+    <h2 class="section-title">✍️ Yangi post yaratish</h2>
 
-      <div class="form-grid">
-        <div class="form-group full">
-          <label>Sarlavha *</label>
-          <input type="text" id="title" placeholder="Post sarlavhasini kiriting...">
-        </div>
+    <div class="form-grid">
+      <div class="form-group full">
+        <label>Sarlavha *</label>
+        <input type="text" id="title" placeholder="Post sarlavhasini kiriting...">
+      </div>
 
-        <div class="form-group full">
-          <label>Qisqa tavsif *</label>
-          <input type="text" id="excerpt" placeholder="Post haqida qisqa tavsif...">
-        </div>
+      <div class="form-group full">
+        <label>Qisqa tavsif *</label>
+        <input type="text" id="excerpt" placeholder="Post haqida qisqa tavsif...">
+      </div>
 
-        <div class="form-group">
-          <label>Kategoriya *</label>
-          <input type="text" id="category" placeholder="Texnologiya, IT, AI...">
-        </div>
+      <div class="form-group">
+        <label>Kategoriya *</label>
+        <input type="text" id="category" placeholder="IT, AI, Texnologiya...">
+      </div>
 
-        <div class="form-group">
-          <label>Sana *</label>
-          <input type="date" id="date">
-        </div>
+      <div class="form-group">
+        <label>Sana *</label>
+        <input type="date" id="date">
+      </div>
 
-        <div class="form-group">
-          <label>O'qish vaqti</label>
-          <input type="text" id="readTime" placeholder="5 daqiqa o'qish" value="5 daqiqa o'qish">
-        </div>
+      <div class="form-group">
+        <label>O'qish vaqti</label>
+        <input type="text" id="readTime" value="5 daqiqa o'qish">
+      </div>
 
-        <div class="form-group">
-          <label>Rasm URL</label>
-          <input type="text" id="image" placeholder="https://... yoki images/rasm.jpg">
-        </div>
+      <div class="form-group">
+        <label>Rasm URL</label>
+        <input type="text" id="image" placeholder="https://... yoki images/rasm.jpg">
+      </div>
 
-        <div class="form-group full">
-          <label>Post matni *</label>
-          <textarea id="content" placeholder="Oddiy matn yozing...
-
-Yangi qator = yangi paragraf
+      <div class="form-group full">
+        <label>Post matni *</label>
+        <textarea id="content" placeholder="Oddiy matn yozing...
 
 ## Sarlavha uchun ## belgisini ishlating
-### Kichik sarlavha uchun ### belgisini ishlating
-- Ro'yxat uchun - belgisini ishlating"></textarea>
-          <p class="hint">💡 Oddiy matn yozing. ## sarlavha, - ro'yxat, bo'sh qator = yangi paragraf</p>
-        </div>
-      </div>
+### Kichik sarlavha uchun ###
+- Ro'yxat uchun - belgisini ishlating
 
-      <button class="generate-btn" onclick="generateCode()">
-        ⚡ Kod yaratish
-      </button>
-
-      <!-- OUTPUT -->
-      <div id="output-section">
-        <div class="output-header">
-          <span class="output-title">📋 posts.js ga ko'chirish uchun kod:</span>
-          <button class="copy-btn" id="copy-btn" onclick="copyCode()">Nusxalash</button>
-        </div>
-        <textarea id="output-code" readonly></textarea>
-
-        <div class="instructions">
-          <h3>📌 Keyingi qadamlar:</h3>
-          <ol>
-            <li>Yuqoridagi kodni <strong>nusxalab oling</strong></li>
-            <li>GitHub'da <code>js/posts.js</code> faylini oching</li>
-            <li><code>const blogPosts = [</code> qatoridan keyin, birinchi <code>{</code> dan oldin yangi kodni qo'shing</li>
-            <li><strong>Commit changes</strong> tugmasini bosing</li>
-            <li>Vercel avtomatik yangilaydi ✅</li>
-          </ol>
-        </div>
-
-        <div class="success-msg" id="success-msg">
-          ✅ Kod nusxalandi! Endi GitHub'da posts.js ga qo'shing.
-        </div>
+Bo'sh qator = yangi paragraf"></textarea>
+        <p class="hint">💡 Oddiy matn yozing. ## sarlavha, - ro'yxat, bo'sh qator = yangi paragraf</p>
       </div>
     </div>
+
+    <button class="publish-btn" id="publish-btn" onclick="publishPost()">
+      🚀 Postni saytga yuklash
+    </button>
+
+    <div class="status-box" id="status-box"></div>
   </div>
+</div>
 
-  <script>
-    const PASSWORD = 'texno2026';
+<script>
+  const PASSWORD = 'texno2026';
+  const REPO = 'abdulazizkhasanboyevich/my-blog';
+  const FILE_PATH = 'js/posts.js';
 
-    document.getElementById('date').value = new Date().toISOString().split('T')[0];
+  document.getElementById('date').value = new Date().toISOString().split('T')[0];
 
-    function login() {
-      const input = document.getElementById('password-input').value;
-      if (input === PASSWORD) {
-        document.getElementById('login-screen').style.display = 'none';
-        document.getElementById('admin-panel').style.display = 'block';
-        sessionStorage.setItem('admin-auth', 'true');
-      } else {
-        document.getElementById('error-msg').style.display = 'block';
-        document.getElementById('password-input').value = '';
-      }
-    }
+  let ghToken = '';
 
-    function logout() {
-      sessionStorage.removeItem('admin-auth');
-      document.getElementById('login-screen').style.display = 'flex';
-      document.getElementById('admin-panel').style.display = 'none';
-    }
-
-    if (sessionStorage.getItem('admin-auth') === 'true') {
+  function login() {
+    const pass = document.getElementById('admin-pass').value;
+    const token = document.getElementById('gh-token').value.trim();
+    if (pass === PASSWORD && token) {
+      ghToken = token;
+      sessionStorage.setItem('admin-auth', 'true');
+      sessionStorage.setItem('gh-token', token);
       document.getElementById('login-screen').style.display = 'none';
       document.getElementById('admin-panel').style.display = 'block';
+    } else {
+      document.getElementById('error-msg').style.display = 'block';
     }
+  }
 
-    function slugify(text) {
-      return text.toLowerCase()
-        .replace(/[^a-z0-9\s-]/g, '')
-        .replace(/\s+/g, '-')
-        .replace(/-+/g, '-')
-        .trim();
-    }
+  function logout() {
+    sessionStorage.clear();
+    ghToken = '';
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('admin-panel').style.display = 'none';
+  }
 
-    // Oddiy matnni HTML ga o'girish
-    function textToHtml(text) {
-      const lines = text.split('\n');
-      let html = '';
-      let inList = false;
+  if (sessionStorage.getItem('admin-auth') === 'true') {
+    ghToken = sessionStorage.getItem('gh-token') || '';
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('admin-panel').style.display = 'block';
+  }
 
-      for (let i = 0; i < lines.length; i++) {
-        const line = lines[i].trim();
+  function slugify(text) {
+    return text.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim();
+  }
 
-        if (!line) {
-          if (inList) { html += '</ul>\n      '; inList = false; }
-          continue;
-        }
-
-        // ## Katta sarlavha
-        if (line.startsWith('## ')) {
-          if (inList) { html += '</ul>\n      '; inList = false; }
-          html += `<h2>${line.slice(3)}</h2>\n      `;
-        }
-        // ### Kichik sarlavha
-        else if (line.startsWith('### ')) {
-          if (inList) { html += '</ul>\n      '; inList = false; }
-          html += `<h3>${line.slice(4)}</h3>\n      `;
-        }
-        // - Ro'yxat
-        else if (line.startsWith('- ')) {
-          if (!inList) { html += '<ul>\n        '; inList = true; }
-          html += `<li>${line.slice(2)}</li>\n        `;
-        }
-        // Oddiy paragraf
-        else {
-          if (inList) { html += '</ul>\n      '; inList = false; }
-          html += `<p>${line}</p>\n      `;
-        }
+  function textToHtml(text) {
+    const lines = text.split('\n');
+    let html = '';
+    let inList = false;
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim();
+      if (!line) { if (inList) { html += '</ul>\n      '; inList = false; } continue; }
+      if (line.startsWith('## ')) {
+        if (inList) { html += '</ul>\n      '; inList = false; }
+        html += `<h2>${line.slice(3)}</h2>\n      `;
+      } else if (line.startsWith('### ')) {
+        if (inList) { html += '</ul>\n      '; inList = false; }
+        html += `<h3>${line.slice(4)}</h3>\n      `;
+      } else if (line.startsWith('- ')) {
+        if (!inList) { html += '<ul>\n        '; inList = true; }
+        html += `<li>${line.slice(2)}</li>\n        `;
+      } else {
+        if (inList) { html += '</ul>\n      '; inList = false; }
+        html += `<p>${line}</p>\n      `;
       }
+    }
+    if (inList) html += '</ul>';
+    return html.trim();
+  }
 
-      if (inList) html += '</ul>';
-      return html.trim();
+  function showStatus(type, msg) {
+    const box = document.getElementById('status-box');
+    box.style.display = 'block';
+    box.className = 'status-box status-' + type;
+    box.innerHTML = type === 'loading' ? `<span class="spinner"></span>${msg}` : msg;
+  }
+
+  async function publishPost() {
+    const title = document.getElementById('title').value.trim();
+    const excerpt = document.getElementById('excerpt').value.trim();
+    const category = document.getElementById('category').value.trim();
+    const date = document.getElementById('date').value;
+    const readTime = document.getElementById('readTime').value.trim();
+    const image = document.getElementById('image').value.trim();
+    const content = document.getElementById('content').value.trim();
+
+    if (!title || !excerpt || !category || !date || !content) {
+      showStatus('error', '❌ Barcha majburiy maydonlarni to\'ldiring (*)');
+      return;
     }
 
-    function generateCode() {
-      const title = document.getElementById('title').value.trim();
-      const excerpt = document.getElementById('excerpt').value.trim();
-      const category = document.getElementById('category').value.trim();
-      const date = document.getElementById('date').value;
-      const readTime = document.getElementById('readTime').value.trim();
-      const image = document.getElementById('image').value.trim();
-      const content = document.getElementById('content').value.trim();
+    const btn = document.getElementById('publish-btn');
+    btn.disabled = true;
+    showStatus('loading', 'GitHub\'dan fayl o\'qilmoqda...');
 
-      if (!title || !excerpt || !category || !date || !content) {
-        alert('❌ Iltimos, barcha majburiy maydonlarni to\'ldiring (*)');
-        return;
-      }
+    try {
+      // 1. Hozirgi posts.js ni GitHub'dan olish
+      const getRes = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`, {
+        headers: { 'Authorization': `token ${ghToken}`, 'Accept': 'application/vnd.github.v3+json' }
+      });
 
+      if (!getRes.ok) throw new Error('GitHub token noto\'g\'ri yoki fayl topilmadi');
+
+      const fileData = await getRes.json();
+      const currentContent = atob(fileData.content.replace(/\n/g, ''));
+      const sha = fileData.sha;
+
+      showStatus('loading', 'Yangi post qo\'shilmoqda...');
+
+      // 2. Yangi post yaratish
       const slug = slugify(title);
       const htmlContent = textToHtml(content);
 
-      const code = `  {
+      const newPost = `  {
     slug: '${slug}',
     title: '${title.replace(/'/g, "\\'")}',
     excerpt: '${excerpt.replace(/'/g, "\\'")}',
@@ -419,28 +258,49 @@ Yangi qator = yangi paragraf
     content: \`
       ${htmlContent}
     \`
-  },`;
+  },\n`;
 
-      document.getElementById('output-code').value = code;
-      document.getElementById('output-section').style.display = 'block';
-      document.getElementById('output-section').scrollIntoView({ behavior: 'smooth' });
+      // 3. posts.js ga yangi postni qo'shish
+      const updatedContent = currentContent.replace('const blogPosts = [\n', `const blogPosts = [\n${newPost}`);
+
+      // 4. GitHub'ga yuklash
+      showStatus('loading', 'Saytga yuklanmoqda...');
+
+      const putRes = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `token ${ghToken}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: `Yangi post: ${title}`,
+          content: btoa(unescape(encodeURIComponent(updatedContent))),
+          sha: sha
+        })
+      });
+
+      if (!putRes.ok) {
+        const err = await putRes.json();
+        throw new Error(err.message || 'Yuklashda xato');
+      }
+
+      showStatus('success', `✅ "${title}" posti muvaffaqiyatli yuklandi! Vercel 1-2 daqiqada yangilaydi.`);
+
+      // Formani tozalash
+      document.getElementById('title').value = '';
+      document.getElementById('excerpt').value = '';
+      document.getElementById('category').value = '';
+      document.getElementById('content').value = '';
+      document.getElementById('image').value = '';
+      document.getElementById('date').value = new Date().toISOString().split('T')[0];
+
+    } catch (err) {
+      showStatus('error', `❌ Xato: ${err.message}`);
+    } finally {
+      btn.disabled = false;
     }
-
-    function copyCode() {
-      const code = document.getElementById('output-code');
-      code.select();
-      document.execCommand('copy');
-
-      const btn = document.getElementById('copy-btn');
-      btn.textContent = '✅ Nusxalandi!';
-      btn.classList.add('copied');
-      document.getElementById('success-msg').style.display = 'block';
-
-      setTimeout(() => {
-        btn.textContent = 'Nusxalash';
-        btn.classList.remove('copied');
-      }, 3000);
-    }
-  </script>
+  }
+</script>
 </body>
 </html>
