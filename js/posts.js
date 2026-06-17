@@ -5,7 +5,7 @@ const blogPosts = [
     excerpt: 'Jadallashib borayotgan AI davrida ish bozorida raqobatbardosh bo\'lish',
     category: 'IT',
     date: '2026-06-17',
-    readTime: '5 daqiqa o'qish',
+    readTime: '5 daqiqa oqish',
     image: 'https://www.sirtbhopal.ac.in/assets/images/blogs/new-era-of-artificial-intelligence-leading-from-transformation-of-industries-to-empowering-people.webp',
     content: `
       <p>Bugungi kunda sun'iy intellekt (AI) texnologiyalari hayotimizning barcha sohalariga kirib kelmoqda. Bu o'zgarish nafaqat texnologiya sohasini, balki ish bozori, ta'lim va jamiyatni ham tubdan o'zgartirmoqda.</p>
