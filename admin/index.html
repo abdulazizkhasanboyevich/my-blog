@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Texno Blog — Admin Panel</title>
+  <title>Texonblog — Admin Panel</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; }
@@ -108,7 +108,7 @@
 <div id="login-screen">
   <div class="login-box">
     <h1>🔐 Admin Panel</h1>
-    <p>Texno Blog boshqaruv paneli</p>
+    <p>Texnoblog boshqaruv paneli</p>
     <input type="password" id="admin-pass" placeholder="Admin paroli..." onkeydown="if(event.key==='Enter') login()">
     <p class="token-hint">GitHub Personal Access Token:</p>
     <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxx..." onkeydown="if(event.key==='Enter') login()">
@@ -120,20 +120,20 @@
 <!-- ADMIN PANEL -->
 <div id="admin-panel">
   <header>
-    <h1>⚡ Texno Blog Admin</h1>
+    <h1>⚡Texnoblog Admin</h1>
     <button class="logout-btn" onclick="logout()">Chiqish</button>
   </header>
 
   <div class="container">
     <!-- TABS -->
     <div class="tabs">
-      <button class="tab-btn active" onclick="switchTab('new-post')">✍️ Yangi post</button>
-      <button class="tab-btn" onclick="switchTab('manage-posts')">📋 Postlarni boshqarish</button>
+      <button class="tab-btn active" onclick="switchTab('new-post')">✍️Yangi post</button>
+      <button class="tab-btn" onclick="switchTab('manage-posts')">📋Mavjud postlarni boshqarish</button>
     </div>
 
     <!-- YANGI POST -->
     <div id="tab-new-post" class="tab-content active">
-      <h2 class="section-title">✍️ Yangi post yaratish</h2>
+      <h2 class="section-title">✍️Yangi post yaratish</h2>
       <div class="form-grid">
         <div class="form-group full">
           <label>Sarlavha *</label>
@@ -177,7 +177,7 @@ Bo'sh qator = yangi paragraf"></textarea>
 
     <!-- POSTLARNI BOSHQARISH -->
     <div id="tab-manage-posts" class="tab-content">
-      <h2 class="section-title">📋 Mavjud postlar</h2>
+      <h2 class="section-title">📋Mavjud postlar</h2>
       <div id="posts-list" class="posts-list">
         <div class="loading-posts">⏳ Postlar yuklanmoqda...</div>
       </div>
@@ -190,7 +190,7 @@ Bo'sh qator = yangi paragraf"></textarea>
 <div class="modal-overlay" id="edit-modal">
   <div class="modal">
     <div class="modal-header">
-      <span class="modal-title">✏️ Postni tahrirlash</span>
+      <span class="modal-title">✏️Postni tahrirlash</span>
       <button class="modal-close" onclick="closeEditModal()">✕</button>
     </div>
     <div class="form-grid">
@@ -221,12 +221,12 @@ Bo'sh qator = yangi paragraf"></textarea>
       <div class="form-group full">
         <label>Post matni (HTML)</label>
         <textarea id="edit-content" style="min-height:300px"></textarea>
-        <p class="hint">💡 Bu yerda HTML format ishlatiladi</p>
+        <p class="hint">💡Bu yerda HTML format ishlatiladi</p>
       </div>
     </div>
     <div class="modal-actions">
       <button class="cancel-btn" onclick="closeEditModal()">Bekor qilish</button>
-      <button class="save-btn" id="save-btn" onclick="savePost()">💾 Saqlash</button>
+      <button class="save-btn" id="save-btn" onclick="savePost()">💾Saqlash</button>
     </div>
     <div class="status-box" id="edit-status"></div>
   </div>
@@ -235,7 +235,7 @@ Bo'sh qator = yangi paragraf"></textarea>
 <!-- O'CHIRISH MODALI -->
 <div class="modal-overlay" id="delete-modal">
   <div class="confirm-modal">
-    <h3>🗑️ Postni o'chirish</h3>
+    <h3>🗑️Postni o'chirish</h3>
     <p id="delete-post-name">Bu postni o'chirishni tasdiqlaysizmi?</p>
     <div class="confirm-actions">
       <button class="confirm-cancel-btn" onclick="closeDeleteModal()">Bekor qilish</button>
@@ -358,7 +358,7 @@ Bo'sh qator = yangi paragraf"></textarea>
     const content = document.getElementById('content').value.trim();
 
     if (!title || !excerpt || !category || !date || !content) {
-      showStatus('new-status', 'error', '❌ Barcha majburiy maydonlarni to\'ldiring (*)');
+      showStatus('new-status', 'error', '❌Barcha majburiy maydonlarni to\'ldiring (*)');
       return;
     }
 
