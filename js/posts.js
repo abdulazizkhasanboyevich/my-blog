@@ -1,5 +1,36 @@
 const blogPosts = [
   {
+    slug: 'ai-davri',
+    title: 'AI davri',
+    excerpt: 'Jadallashib borayotgan AI davrida ish bozorida raqobatbardosh bo\'lish',
+    category: 'IT',
+    date: '2026-06-17',
+    readTime: '5 daqiqa o'qish',
+    image: 'https://www.sirtbhopal.ac.in/assets/images/blogs/new-era-of-artificial-intelligence-leading-from-transformation-of-industries-to-empowering-people.webp',
+    content: `
+      <p>Bugungi kunda sun'iy intellekt (AI) texnologiyalari hayotimizning barcha sohalariga kirib kelmoqda. Bu o'zgarish nafaqat texnologiya sohasini, balki ish bozori, ta'lim va jamiyatni ham tubdan o'zgartirmoqda.</p>
+      <h2>AI ish bozorida nima o'zgartirmoqda?</h2>
+      <p>So'nggi yillarda AI ko'plab oddiy va takroriy ishlarni avtomatlashtirdi. Bugungi mutaxassis ertaga AI bilan raqobatlashishi mumkin. Lekin bu faqat xavf emas — yangi imkoniyatlar ham yaratmoqda.</p>
+      <ul>
+        <li>Dasturchilar AI yordamida 10 barobar tezroq kod yozmoqda</li>
+        <li>Dizaynerlar AI orqali daqiqalar ichida professional dizayn yaratmoqda</li>
+        <li>Yozuvchilar AI bilan kontent ishlab chiqarishni tezlashtirmoqda</li>
+        <li>Tahlilchilar katta ma'lumotlarni AI yordamida tezroq qayta ishlamoqda</li>
+        </ul>
+      <h2>Raqobatbardosh bo'lish uchun nima qilish kerak?</h2>
+      <p>AI davrida muvaffaqiyatli bo'lish uchun bir narsani tushunish kerak — AI sizning o'rningizni emas, AI ishlatadigan odam sizning o'rningizni egallaydi.</p>
+      <h3>Zarur ko'nikmalar</h3>
+      <ul>
+        <li>AI toollarini o'rganish va ulardan samarali foydalanish</li>
+        <li>Ijodiy va tanqidiy fikrlash qobiliyatini rivojlantirish</li>
+        <li>Muloqot va hamkorlik ko'nikmalarini mustahkamlash</li>
+        <li>Yangi texnologiyalarga tez moslashish</li>
+        </ul>
+      <h2>Xulosa</h2>
+      <p>AI davri qo'rqinchli emas — u yangi imkoniyatlar davri. Vibe coding, AI yordamchi dasturlar va zamonaviy toollarni o'rganish orqali siz ham bu o'zgarishdan foyda olishingiz mumkin. Muhimi — o'rganishni to'xtatmaslik!</p>
+    `
+  },
+  {
     slug: 'finding-clarity-in-code',
     title: 'Vibe-Coding orqali dastlabki website!',
     excerpt: 'Claude, Vercel, Github kabi toollar orqali professional website yaratish',
@@ -8,12 +39,12 @@ const blogPosts = [
     readTime: '5 min read',
     image: 'https://miro.medium.com/0*vOaWDgTmVpMfi9ws',
     content: `
-      <p>We've all been there — staring at a tangled mess of logic, convinced the solution needs to be complex because the problem feels complex. But more often than not, the clearest code comes from the simplest mental model.</p>
+      <p>We've all been there â staring at a tangled mess of logic, convinced the solution needs to be complex because the problem feels complex. But more often than not, the clearest code comes from the simplest mental model.</p>
 
       <h2>Start with the question, not the answer</h2>
       <p>Before writing a single line, ask yourself: what is this code actually trying to accomplish? Strip away the implementation details and describe the goal in plain language. If you can't explain it simply, you don't understand it well enough yet.</p>
 
-      <blockquote>The best code reads like well-written prose — each function has a clear purpose, and the flow is obvious to anyone who picks it up.</blockquote>
+      <blockquote>The best code reads like well-written prose â each function has a clear purpose, and the flow is obvious to anyone who picks it up.</blockquote>
 
       <h2>Embrace small functions</h2>
       <p>Large functions are tempting because they keep everything in one place. But they hide complexity. A function that does one thing well is easier to test, easier to name, and easier to reuse.</p>
@@ -27,7 +58,7 @@ const blogPosts = [
       <h2>Delete with confidence</h2>
       <p>Some of the best refactoring sessions end with less code than you started with. Dead code, over-abstractions, and "just in case" branches add noise. If you're not sure something is needed, try removing it. Version control has your back.</p>
 
-      <p>Clarity isn't about writing less — it's about making every line earn its place on the screen.</p>
+      <p>Clarity isn't about writing less â it's about making every line earn its place on the screen.</p>
     `
   }
   
