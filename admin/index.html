@@ -1,3 +1,4 @@
+cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
 <!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -8,6 +9,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; }
 
+    /* LOGIN */
     #login-screen { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
     .login-box { background: #1e293b; border: 1px solid #334155; border-radius: 16px; padding: 48px 40px; width: 100%; max-width: 420px; text-align: center; }
     .login-box h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; color: #f1f5f9; }
@@ -19,47 +21,86 @@
     .error-msg { color: #f87171; font-size: 14px; margin-top: 12px; display: none; }
     .token-hint { font-size: 12px; color: #64748b; margin-bottom: 4px; text-align: left; }
 
+    /* ADMIN */
     #admin-panel { display: none; }
     header { background: #1e293b; border-bottom: 1px solid #334155; padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; }
     header h1 { font-size: 18px; font-weight: 700; color: #6366f1; }
     .logout-btn { padding: 8px 16px; background: transparent; border: 1px solid #475569; border-radius: 8px; color: #94a3b8; cursor: pointer; font-size: 14px; }
     .logout-btn:hover { border-color: #f87171; color: #f87171; }
 
+    /* TABS */
+    .tabs { display: flex; gap: 8px; margin-bottom: 32px; border-bottom: 1px solid #334155; }
+    .tab-btn { padding: 12px 24px; background: transparent; border: none; color: #94a3b8; font-size: 15px; font-weight: 600; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -1px; transition: all 0.2s; }
+    .tab-btn.active { color: #6366f1; border-bottom-color: #6366f1; }
+    .tab-btn:hover { color: #f1f5f9; }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
     .container { max-width: 900px; margin: 0 auto; padding: 32px 24px; }
     .section-title { font-size: 22px; font-weight: 700; margin-bottom: 24px; color: #f1f5f9; }
 
+    /* FORM */
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
     .form-group { display: flex; flex-direction: column; gap: 6px; }
     .form-group.full { grid-column: 1 / -1; }
-
     label { font-size: 13px; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
     .hint { font-size: 12px; color: #64748b; margin-top: 4px; }
-
-    input[type="text"], input[type="date"], textarea {
-      padding: 10px 14px; background: #1e293b; border: 1px solid #334155;
-      border-radius: 8px; color: #f1f5f9; font-size: 15px; outline: none; font-family: inherit;
-    }
+    input[type="text"], input[type="date"], textarea { padding: 10px 14px; background: #1e293b; border: 1px solid #334155; border-radius: 8px; color: #f1f5f9; font-size: 15px; outline: none; font-family: inherit; }
     input:focus, textarea:focus { border-color: #6366f1; }
     textarea { resize: vertical; min-height: 220px; line-height: 1.6; }
 
-    .publish-btn {
-      width: 100%; padding: 16px; background: #6366f1; color: white;
-      border: none; border-radius: 10px; font-size: 17px; font-weight: 700;
-      cursor: pointer; margin-top: 8px; transition: all 0.2s;
-    }
-    .publish-btn:hover { background: #4f46e5; transform: translateY(-1px); }
-    .publish-btn:disabled { background: #334155; cursor: not-allowed; transform: none; }
+    .publish-btn { width: 100%; padding: 16px; background: #6366f1; color: white; border: none; border-radius: 10px; font-size: 17px; font-weight: 700; cursor: pointer; margin-top: 8px; transition: all 0.2s; }
+    .publish-btn:hover { background: #4f46e5; }
+    .publish-btn:disabled { background: #334155; cursor: not-allowed; }
 
     /* STATUS */
     .status-box { display: none; margin-top: 20px; padding: 16px 20px; border-radius: 10px; font-size: 15px; font-weight: 500; }
     .status-loading { background: #1e3a5f; border: 1px solid #3b82f6; color: #93c5fd; }
     .status-success { background: #064e3b; border: 1px solid #10b981; color: #10b981; }
     .status-error { background: #450a0a; border: 1px solid #f87171; color: #f87171; }
-
     .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid #93c5fd; border-top-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite; margin-right: 8px; vertical-align: middle; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    @media (max-width: 640px) { .form-grid { grid-template-columns: 1fr; } header { padding: 16px; } .container { padding: 20px 16px; } }
+    /* POSTS LIST */
+    .posts-list { display: flex; flex-direction: column; gap: 16px; }
+    .post-item { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .post-item-info { flex: 1; }
+    .post-item-title { font-size: 16px; font-weight: 700; color: #f1f5f9; margin-bottom: 6px; }
+    .post-item-meta { font-size: 13px; color: #64748b; display: flex; gap: 16px; }
+    .post-item-category { background: #312e81; color: #a5b4fc; padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+    .post-item-actions { display: flex; gap: 8px; flex-shrink: 0; }
+    .edit-btn { padding: 8px 16px; background: #1d4ed8; color: white; border: none; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; }
+    .edit-btn:hover { background: #1e40af; }
+    .delete-btn { padding: 8px 16px; background: #7f1d1d; color: #fca5a5; border: none; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; }
+    .delete-btn:hover { background: #991b1b; }
+
+    .loading-posts { text-align: center; padding: 40px; color: #64748b; }
+
+    /* MODAL */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
+    .modal-overlay.open { display: flex; }
+    .modal { background: #1e293b; border: 1px solid #334155; border-radius: 16px; padding: 32px; width: 100%; max-width: 800px; max-height: 90vh; overflow-y: auto; }
+    .modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+    .modal-title { font-size: 20px; font-weight: 700; color: #f1f5f9; }
+    .modal-close { background: transparent; border: none; color: #94a3b8; font-size: 24px; cursor: pointer; padding: 4px; }
+    .modal-close:hover { color: #f87171; }
+    .modal-actions { display: flex; gap: 12px; margin-top: 20px; }
+    .save-btn { flex: 1; padding: 14px; background: #6366f1; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer; }
+    .save-btn:hover { background: #4f46e5; }
+    .cancel-btn { padding: 14px 24px; background: transparent; border: 1px solid #475569; color: #94a3b8; border-radius: 10px; font-size: 16px; cursor: pointer; }
+    .cancel-btn:hover { border-color: #94a3b8; color: #f1f5f9; }
+
+    /* CONFIRM MODAL */
+    .confirm-modal { background: #1e293b; border: 1px solid #334155; border-radius: 16px; padding: 32px; width: 100%; max-width: 400px; text-align: center; }
+    .confirm-modal h3 { font-size: 20px; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .confirm-modal p { color: #94a3b8; margin-bottom: 24px; }
+    .confirm-actions { display: flex; gap: 12px; }
+    .confirm-delete-btn { flex: 1; padding: 12px; background: #dc2626; color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; }
+    .confirm-delete-btn:hover { background: #b91c1c; }
+    .confirm-cancel-btn { flex: 1; padding: 12px; background: transparent; border: 1px solid #475569; color: #94a3b8; border-radius: 8px; font-size: 15px; cursor: pointer; }
+
+    @media (max-width: 640px) { .form-grid { grid-template-columns: 1fr; } header { padding: 16px; } .container { padding: 20px 16px; } .post-item { flex-direction: column; align-items: flex-start; } }
   </style>
 </head>
 <body>
@@ -73,7 +114,7 @@
     <p class="token-hint">GitHub Personal Access Token:</p>
     <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxx..." onkeydown="if(event.key==='Enter') login()">
     <button class="btn-primary" onclick="login()">Kirish</button>
-    <p class="error-msg" id="error-msg">❌ Parol noto'g'ri!</p>
+    <p class="error-msg" id="error-msg">❌ Parol yoki token noto'g'ri!</p>
   </div>
 </div>
 
@@ -85,57 +126,123 @@
   </header>
 
   <div class="container">
-    <h2 class="section-title">✍️ Yangi post yaratish</h2>
+    <!-- TABS -->
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('new-post')">✍️ Yangi post</button>
+      <button class="tab-btn" onclick="switchTab('manage-posts')">📋 Postlarni boshqarish</button>
+    </div>
 
-    <div class="form-grid">
-      <div class="form-group full">
-        <label>Sarlavha *</label>
-        <input type="text" id="title" placeholder="Post sarlavhasini kiriting...">
-      </div>
-
-      <div class="form-group full">
-        <label>Qisqa tavsif *</label>
-        <input type="text" id="excerpt" placeholder="Post haqida qisqa tavsif...">
-      </div>
-
-      <div class="form-group">
-        <label>Kategoriya *</label>
-        <input type="text" id="category" placeholder="IT, AI, Texnologiya...">
-      </div>
-
-      <div class="form-group">
-        <label>Sana *</label>
-        <input type="date" id="date">
-      </div>
-
-      <div class="form-group">
-        <label>O'qish vaqti</label>
-        <input type="text" id="readTime" value="5 daqiqa o'qish">
-      </div>
-
-      <div class="form-group">
-        <label>Rasm URL</label>
-        <input type="text" id="image" placeholder="https://... yoki images/rasm.jpg">
-      </div>
-
-      <div class="form-group full">
-        <label>Post matni *</label>
-        <textarea id="content" placeholder="Oddiy matn yozing...
+    <!-- YANGI POST -->
+    <div id="tab-new-post" class="tab-content active">
+      <h2 class="section-title">✍️ Yangi post yaratish</h2>
+      <div class="form-grid">
+        <div class="form-group full">
+          <label>Sarlavha *</label>
+          <input type="text" id="title" placeholder="Post sarlavhasini kiriting...">
+        </div>
+        <div class="form-group full">
+          <label>Qisqa tavsif *</label>
+          <input type="text" id="excerpt" placeholder="Post haqida qisqa tavsif...">
+        </div>
+        <div class="form-group">
+          <label>Kategoriya *</label>
+          <input type="text" id="category" placeholder="IT, AI, Texnologiya...">
+        </div>
+        <div class="form-group">
+          <label>Sana *</label>
+          <input type="date" id="date">
+        </div>
+        <div class="form-group">
+          <label>O'qish vaqti</label>
+          <input type="text" id="readTime" value="5 min read">
+        </div>
+        <div class="form-group">
+          <label>Rasm URL</label>
+          <input type="text" id="image" placeholder="https://... yoki images/rasm.jpg">
+        </div>
+        <div class="form-group full">
+          <label>Post matni *</label>
+          <textarea id="content" placeholder="Oddiy matn yozing...
 
 ## Sarlavha uchun ## belgisini ishlating
 ### Kichik sarlavha uchun ###
 - Ro'yxat uchun - belgisini ishlating
 
 Bo'sh qator = yangi paragraf"></textarea>
-        <p class="hint">💡 Oddiy matn yozing. ## sarlavha, - ro'yxat, bo'sh qator = yangi paragraf</p>
+          <p class="hint">💡 ## sarlavha, - ro'yxat, bo'sh qator = yangi paragraf</p>
+        </div>
       </div>
+      <button class="publish-btn" id="publish-btn" onclick="publishPost()">🚀 Postni saytga yuklash</button>
+      <div class="status-box" id="new-status"></div>
     </div>
 
-    <button class="publish-btn" id="publish-btn" onclick="publishPost()">
-      🚀 Postni saytga yuklash
-    </button>
+    <!-- POSTLARNI BOSHQARISH -->
+    <div id="tab-manage-posts" class="tab-content">
+      <h2 class="section-title">📋 Mavjud postlar</h2>
+      <div id="posts-list" class="posts-list">
+        <div class="loading-posts">⏳ Postlar yuklanmoqda...</div>
+      </div>
+      <div class="status-box" id="manage-status"></div>
+    </div>
+  </div>
+</div>
 
-    <div class="status-box" id="status-box"></div>
+<!-- TAHRIRLASH MODALI -->
+<div class="modal-overlay" id="edit-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title">✏️ Postni tahrirlash</span>
+      <button class="modal-close" onclick="closeEditModal()">✕</button>
+    </div>
+    <div class="form-grid">
+      <div class="form-group full">
+        <label>Sarlavha *</label>
+        <input type="text" id="edit-title">
+      </div>
+      <div class="form-group full">
+        <label>Qisqa tavsif *</label>
+        <input type="text" id="edit-excerpt">
+      </div>
+      <div class="form-group">
+        <label>Kategoriya *</label>
+        <input type="text" id="edit-category">
+      </div>
+      <div class="form-group">
+        <label>Sana *</label>
+        <input type="date" id="edit-date">
+      </div>
+      <div class="form-group">
+        <label>O'qish vaqti</label>
+        <input type="text" id="edit-readTime">
+      </div>
+      <div class="form-group">
+        <label>Rasm URL</label>
+        <input type="text" id="edit-image">
+      </div>
+      <div class="form-group full">
+        <label>Post matni (HTML)</label>
+        <textarea id="edit-content" style="min-height:300px"></textarea>
+        <p class="hint">💡 Bu yerda HTML format ishlatiladi</p>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="cancel-btn" onclick="closeEditModal()">Bekor qilish</button>
+      <button class="save-btn" id="save-btn" onclick="savePost()">💾 Saqlash</button>
+    </div>
+    <div class="status-box" id="edit-status"></div>
+  </div>
+</div>
+
+<!-- O'CHIRISH MODALI -->
+<div class="modal-overlay" id="delete-modal">
+  <div class="confirm-modal">
+    <h3>🗑️ Postni o'chirish</h3>
+    <p id="delete-post-name">Bu postni o'chirishni tasdiqlaysizmi?</p>
+    <div class="confirm-actions">
+      <button class="confirm-cancel-btn" onclick="closeDeleteModal()">Bekor qilish</button>
+      <button class="confirm-delete-btn" id="confirm-delete-btn" onclick="confirmDelete()">O'chirish</button>
+    </div>
+    <div class="status-box" id="delete-status"></div>
   </div>
 </div>
 
@@ -143,10 +250,13 @@ Bo'sh qator = yangi paragraf"></textarea>
   const PASSWORD = 'texno2026';
   const REPO = 'abdulazizkhasanboyevich/my-blog';
   const FILE_PATH = 'js/posts.js';
+  let ghToken = '';
+  let currentPosts = [];
+  let currentSha = '';
+  let editingSlug = '';
+  let deletingSlug = '';
 
   document.getElementById('date').value = new Date().toISOString().split('T')[0];
-
-  let ghToken = '';
 
   function login() {
     const pass = document.getElementById('admin-pass').value;
@@ -175,6 +285,14 @@ Bo'sh qator = yangi paragraf"></textarea>
     document.getElementById('admin-panel').style.display = 'block';
   }
 
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    event.target.classList.add('active');
+    document.getElementById('tab-' + tab).classList.add('active');
+    if (tab === 'manage-posts') loadPosts();
+  }
+
   function slugify(text) {
     return text.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim();
   }
@@ -183,8 +301,8 @@ Bo'sh qator = yangi paragraf"></textarea>
     const lines = text.split('\n');
     let html = '';
     let inList = false;
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i].trim();
+    for (let line of lines) {
+      line = line.trim();
       if (!line) { if (inList) { html += '</ul>\n      '; inList = false; } continue; }
       if (line.startsWith('## ')) {
         if (inList) { html += '</ul>\n      '; inList = false; }
@@ -204,13 +322,33 @@ Bo'sh qator = yangi paragraf"></textarea>
     return html.trim();
   }
 
-  function showStatus(type, msg) {
-    const box = document.getElementById('status-box');
+  function showStatus(id, type, msg) {
+    const box = document.getElementById(id);
     box.style.display = 'block';
     box.className = 'status-box status-' + type;
     box.innerHTML = type === 'loading' ? `<span class="spinner"></span>${msg}` : msg;
   }
 
+  async function getFileFromGitHub() {
+    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`, {
+      headers: { 'Authorization': `token ${ghToken}`, 'Accept': 'application/vnd.github.v3+json' }
+    });
+    if (!res.ok) throw new Error('GitHub dan fayl olinmadi');
+    const data = await res.json();
+    currentSha = data.sha;
+    return atob(data.content.replace(/\n/g, ''));
+  }
+
+  async function saveFileToGitHub(content, message) {
+    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`, {
+      method: 'PUT',
+      headers: { 'Authorization': `token ${ghToken}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, content: btoa(unescape(encodeURIComponent(content))), sha: currentSha })
+    });
+    if (!res.ok) { const e = await res.json(); throw new Error(e.message); }
+  }
+
+  // ========= YANGI POST =========
   async function publishPost() {
     const title = document.getElementById('title').value.trim();
     const excerpt = document.getElementById('excerpt').value.trim();
@@ -221,86 +359,184 @@ Bo'sh qator = yangi paragraf"></textarea>
     const content = document.getElementById('content').value.trim();
 
     if (!title || !excerpt || !category || !date || !content) {
-      showStatus('error', '❌ Barcha majburiy maydonlarni to\'ldiring (*)');
+      showStatus('new-status', 'error', '❌ Barcha majburiy maydonlarni to\'ldiring (*)');
       return;
     }
 
-    const btn = document.getElementById('publish-btn');
-    btn.disabled = true;
-    showStatus('loading', 'GitHub\'dan fayl o\'qilmoqda...');
+    document.getElementById('publish-btn').disabled = true;
+    showStatus('new-status', 'loading', 'GitHub\'dan fayl o\'qilmoqda...');
 
     try {
-      // 1. Hozirgi posts.js ni GitHub'dan olish
-      const getRes = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`, {
-        headers: { 'Authorization': `token ${ghToken}`, 'Accept': 'application/vnd.github.v3+json' }
-      });
+      const currentContent = await getFileFromGitHub();
+      showStatus('new-status', 'loading', 'Yangi post qo\'shilmoqda...');
 
-      if (!getRes.ok) throw new Error('GitHub token noto\'g\'ri yoki fayl topilmadi');
-
-      const fileData = await getRes.json();
-      const currentContent = atob(fileData.content.replace(/\n/g, ''));
-      const sha = fileData.sha;
-
-      showStatus('loading', 'Yangi post qo\'shilmoqda...');
-
-      // 2. Yangi post yaratish
       const slug = slugify(title);
       const htmlContent = textToHtml(content);
+      const newPost = `  {\n    slug: '${slug}',\n    title: '${title.replace(/'/g, "\\'")}',\n    excerpt: '${excerpt.replace(/'/g, "\\'")}',\n    category: '${category}',\n    date: '${date}',\n    readTime: '${readTime}',\n    image: '${image || 'images/default.jpg'}',\n    content: \`\n      ${htmlContent}\n    \`\n  },\n`;
 
-      const newPost = `  {
-    slug: '${slug}',
-    title: '${title.replace(/'/g, "\\'")}',
-    excerpt: '${excerpt.replace(/'/g, "\\'")}',
-    category: '${category}',
-    date: '${date}',
-    readTime: '${readTime}',
-    image: '${image || 'images/default.jpg'}',
-    content: \`
-      ${htmlContent}
-    \`
-  },\n`;
-
-      // 3. posts.js ga yangi postni qo'shish
       const updatedContent = currentContent.replace('const blogPosts = [\n', `const blogPosts = [\n${newPost}`);
+      showStatus('new-status', 'loading', 'Saytga yuklanmoqda...');
+      await saveFileToGitHub(updatedContent, `Yangi post: ${title}`);
 
-      // 4. GitHub'ga yuklash
-      showStatus('loading', 'Saytga yuklanmoqda...');
-
-      const putRes = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`, {
-        method: 'PUT',
-        headers: {
-          'Authorization': `token ${ghToken}`,
-          'Accept': 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          message: `Yangi post: ${title}`,
-          content: btoa(unescape(encodeURIComponent(updatedContent))),
-          sha: sha
-        })
-      });
-
-      if (!putRes.ok) {
-        const err = await putRes.json();
-        throw new Error(err.message || 'Yuklashda xato');
-      }
-
-      showStatus('success', `✅ "${title}" posti muvaffaqiyatli yuklandi! Vercel 1-2 daqiqada yangilaydi.`);
-
-      // Formani tozalash
+      showStatus('new-status', 'success', `✅ "${title}" posti muvaffaqiyatli yuklandi! Vercel 1-2 daqiqada yangilaydi.`);
       document.getElementById('title').value = '';
       document.getElementById('excerpt').value = '';
       document.getElementById('category').value = '';
       document.getElementById('content').value = '';
       document.getElementById('image').value = '';
       document.getElementById('date').value = new Date().toISOString().split('T')[0];
-
     } catch (err) {
-      showStatus('error', `❌ Xato: ${err.message}`);
+      showStatus('new-status', 'error', `❌ Xato: ${err.message}`);
     } finally {
-      btn.disabled = false;
+      document.getElementById('publish-btn').disabled = false;
     }
+  }
+
+  // ========= POSTLAR RO'YXATI =========
+  async function loadPosts() {
+    document.getElementById('posts-list').innerHTML = '<div class="loading-posts">⏳ Postlar yuklanmoqda...</div>';
+    try {
+      const content = await getFileFromGitHub();
+      const match = content.match(/const blogPosts = \[([\s\S]*?)\];\s*\n\nfunction/);
+      if (!match) throw new Error('Postlar topilmadi');
+
+      // Postlarni eval bilan yuklaymiz
+      const fn = new Function(`const blogPosts = [${match[1]}]; return blogPosts;`);
+      currentPosts = fn();
+      renderPostsList();
+    } catch (err) {
+      document.getElementById('posts-list').innerHTML = `<div class="loading-posts">❌ Xato: ${err.message}</div>`;
+    }
+  }
+
+  function renderPostsList() {
+    if (!currentPosts.length) {
+      document.getElementById('posts-list').innerHTML = '<div class="loading-posts">Hech qanday post yo\'q</div>';
+      return;
+    }
+    document.getElementById('posts-list').innerHTML = currentPosts.map(post => `
+      <div class="post-item">
+        <div class="post-item-info">
+          <div class="post-item-title">${post.title}</div>
+          <div class="post-item-meta">
+            <span class="post-item-category">${post.category}</span>
+            <span>${post.date}</span>
+            <span>${post.readTime}</span>
+          </div>
+        </div>
+        <div class="post-item-actions">
+          <button class="edit-btn" onclick="openEditModal('${post.slug}')">✏️ Tahrirlash</button>
+          <button class="delete-btn" onclick="openDeleteModal('${post.slug}', '${post.title.replace(/'/g, "\\'")}')">🗑️ O'chirish</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // ========= TAHRIRLASH =========
+  function openEditModal(slug) {
+    const post = currentPosts.find(p => p.slug === slug);
+    if (!post) return;
+    editingSlug = slug;
+    document.getElementById('edit-title').value = post.title;
+    document.getElementById('edit-excerpt').value = post.excerpt;
+    document.getElementById('edit-category').value = post.category;
+    document.getElementById('edit-date').value = post.date;
+    document.getElementById('edit-readTime').value = post.readTime;
+    document.getElementById('edit-image').value = post.image;
+    document.getElementById('edit-content').value = post.content.trim();
+    document.getElementById('edit-status').style.display = 'none';
+    document.getElementById('edit-modal').classList.add('open');
+  }
+
+  function closeEditModal() {
+    document.getElementById('edit-modal').classList.remove('open');
+    editingSlug = '';
+  }
+
+  async function savePost() {
+    const title = document.getElementById('edit-title').value.trim();
+    const excerpt = document.getElementById('edit-excerpt').value.trim();
+    const category = document.getElementById('edit-category').value.trim();
+    const date = document.getElementById('edit-date').value;
+    const readTime = document.getElementById('edit-readTime').value.trim();
+    const image = document.getElementById('edit-image').value.trim();
+    const content = document.getElementById('edit-content').value.trim();
+
+    if (!title || !excerpt || !category || !date || !content) {
+      showStatus('edit-status', 'error', '❌ Barcha maydonlarni to\'ldiring');
+      return;
+    }
+
+    document.getElementById('save-btn').disabled = true;
+    showStatus('edit-status', 'loading', 'Saqlanmoqda...');
+
+    try {
+      const fileContent = await getFileFromGitHub();
+      const updatedPosts = currentPosts.map(p => {
+        if (p.slug !== editingSlug) return p;
+        return { ...p, title, excerpt, category, date, readTime, image, content: `\n      ${content}\n    ` };
+      });
+
+      const newFileContent = rebuildPostsJs(fileContent, updatedPosts);
+      await saveFileToGitHub(newFileContent, `Post tahrirlandi: ${title}`);
+
+      currentPosts = updatedPosts;
+      renderPostsList();
+      showStatus('edit-status', 'success', '✅ Post muvaffaqiyatli saqlandi!');
+      setTimeout(() => closeEditModal(), 1500);
+    } catch (err) {
+      showStatus('edit-status', 'error', `❌ Xato: ${err.message}`);
+    } finally {
+      document.getElementById('save-btn').disabled = false;
+    }
+  }
+
+  // ========= O'CHIRISH =========
+  function openDeleteModal(slug, title) {
+    deletingSlug = slug;
+    document.getElementById('delete-post-name').textContent = `"${title}" postini o'chirishni tasdiqlaysizmi?`;
+    document.getElementById('delete-status').style.display = 'none';
+    document.getElementById('delete-modal').classList.add('open');
+  }
+
+  function closeDeleteModal() {
+    document.getElementById('delete-modal').classList.remove('open');
+    deletingSlug = '';
+  }
+
+  async function confirmDelete() {
+    document.getElementById('confirm-delete-btn').disabled = true;
+    showStatus('delete-status', 'loading', 'O\'chirilmoqda...');
+
+    try {
+      const fileContent = await getFileFromGitHub();
+      const deletedPost = currentPosts.find(p => p.slug === deletingSlug);
+      const updatedPosts = currentPosts.filter(p => p.slug !== deletingSlug);
+      const newFileContent = rebuildPostsJs(fileContent, updatedPosts);
+      await saveFileToGitHub(newFileContent, `Post o'chirildi: ${deletedPost?.title}`);
+
+      currentPosts = updatedPosts;
+      renderPostsList();
+      showStatus('manage-status', 'success', `✅ Post o'chirildi! Vercel 1-2 daqiqada yangilaydi.`);
+      closeDeleteModal();
+    } catch (err) {
+      showStatus('delete-status', 'error', `❌ Xato: ${err.message}`);
+    } finally {
+      document.getElementById('confirm-delete-btn').disabled = false;
+    }
+  }
+
+  // ========= FAYL QAYTA YOZISH =========
+  function rebuildPostsJs(originalContent, posts) {
+    const postsCode = posts.map(p => {
+      return `  {\n    slug: '${p.slug}',\n    title: '${p.title.replace(/'/g, "\\'")}',\n    excerpt: '${p.excerpt.replace(/'/g, "\\'")}',\n    category: '${p.category}',\n    date: '${p.date}',\n    readTime: '${p.readTime}',\n    image: '${p.image}',\n    content: \`${p.content}\`\n  }`;
+    }).join(',\n');
+
+    const functionsMatch = originalContent.match(/\];\s*\n\nfunction[\s\S]*/);
+    const functions = functionsMatch ? functionsMatch[0] : '\n];\n';
+    return `const blogPosts = [\n${postsCode}\n${functions}`;
   }
 </script>
 </body>
 </html>
+HTMLEOF
