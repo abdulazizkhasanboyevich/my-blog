@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TexnoBlog — Admin Panel</title>
+  <title>Texno Blog — Admin Panel</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -14,7 +14,6 @@
       min-height: 100vh;
     }
 
-    /* LOGIN */
     #login-screen {
       display: flex;
       align-items: center;
@@ -32,18 +31,8 @@
       text-align: center;
     }
 
-    .login-box h1 {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: #f1f5f9;
-    }
-
-    .login-box p {
-      color: #94a3b8;
-      margin-bottom: 32px;
-      font-size: 14px;
-    }
+    .login-box h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; color: #f1f5f9; }
+    .login-box p { color: #94a3b8; margin-bottom: 32px; font-size: 14px; }
 
     .login-box input {
       width: 100%;
@@ -55,7 +44,6 @@
       font-size: 16px;
       margin-bottom: 16px;
       outline: none;
-      transition: border-color 0.2s;
     }
 
     .login-box input:focus { border-color: #6366f1; }
@@ -70,19 +58,11 @@
       font-size: 16px;
       font-weight: 600;
       cursor: pointer;
-      transition: background 0.2s;
     }
 
     .btn-primary:hover { background: #4f46e5; }
+    .error-msg { color: #f87171; font-size: 14px; margin-top: 12px; display: none; }
 
-    .error-msg {
-      color: #f87171;
-      font-size: 14px;
-      margin-top: 12px;
-      display: none;
-    }
-
-    /* ADMIN PANEL */
     #admin-panel { display: none; }
 
     header {
@@ -94,11 +74,7 @@
       justify-content: space-between;
     }
 
-    header h1 {
-      font-size: 18px;
-      font-weight: 700;
-      color: #6366f1;
-    }
+    header h1 { font-size: 18px; font-weight: 700; color: #6366f1; }
 
     .logout-btn {
       padding: 8px 16px;
@@ -108,26 +84,12 @@
       color: #94a3b8;
       cursor: pointer;
       font-size: 14px;
-      transition: all 0.2s;
     }
 
-    .logout-btn:hover {
-      border-color: #f87171;
-      color: #f87171;
-    }
+    .logout-btn:hover { border-color: #f87171; color: #f87171; }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 32px 24px;
-    }
-
-    .section-title {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 24px;
-      color: #f1f5f9;
-    }
+    .container { max-width: 900px; margin: 0 auto; padding: 32px 24px; }
+    .section-title { font-size: 22px; font-weight: 700; margin-bottom: 24px; color: #f1f5f9; }
 
     .form-grid {
       display: grid;
@@ -136,12 +98,7 @@
       margin-bottom: 16px;
     }
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
     .form-group.full { grid-column: 1 / -1; }
 
     label {
@@ -154,8 +111,7 @@
 
     input[type="text"],
     input[type="date"],
-    textarea,
-    select {
+    textarea {
       padding: 10px 14px;
       background: #1e293b;
       border: 1px solid #334155;
@@ -163,18 +119,17 @@
       color: #f1f5f9;
       font-size: 15px;
       outline: none;
-      transition: border-color 0.2s;
       font-family: inherit;
     }
 
-    input:focus, textarea:focus, select:focus {
-      border-color: #6366f1;
-    }
+    input:focus, textarea:focus { border-color: #6366f1; }
 
-    textarea {
-      resize: vertical;
-      min-height: 200px;
-      line-height: 1.6;
+    textarea { resize: vertical; min-height: 200px; line-height: 1.6; }
+
+    .hint {
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 4px;
     }
 
     .generate-btn {
@@ -188,16 +143,11 @@
       font-weight: 700;
       cursor: pointer;
       margin-top: 8px;
-      transition: background 0.2s;
     }
 
     .generate-btn:hover { background: #4f46e5; }
 
-    /* OUTPUT */
-    #output-section {
-      display: none;
-      margin-top: 32px;
-    }
+    #output-section { display: none; margin-top: 32px; }
 
     .output-header {
       display: flex;
@@ -206,11 +156,7 @@
       margin-bottom: 12px;
     }
 
-    .output-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: #f1f5f9;
-    }
+    .output-title { font-size: 16px; font-weight: 700; color: #f1f5f9; }
 
     .copy-btn {
       padding: 8px 20px;
@@ -221,7 +167,6 @@
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
-      transition: background 0.2s;
     }
 
     .copy-btn:hover { background: #059669; }
@@ -241,7 +186,6 @@
       resize: vertical;
     }
 
-    /* INSTRUCTIONS */
     .instructions {
       margin-top: 24px;
       padding: 20px;
@@ -251,33 +195,10 @@
       border-left: 4px solid #6366f1;
     }
 
-    .instructions h3 {
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      color: #f1f5f9;
-    }
-
-    .instructions ol {
-      padding-left: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .instructions li {
-      font-size: 14px;
-      color: #94a3b8;
-      line-height: 1.6;
-    }
-
-    .instructions code {
-      background: #0f172a;
-      padding: 2px 6px;
-      border-radius: 4px;
-      color: #a5f3fc;
-      font-size: 13px;
-    }
+    .instructions h3 { font-size: 15px; font-weight: 700; margin-bottom: 12px; color: #f1f5f9; }
+    .instructions ol { padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+    .instructions li { font-size: 14px; color: #94a3b8; line-height: 1.6; }
+    .instructions code { background: #0f172a; padding: 2px 6px; border-radius: 4px; color: #a5f3fc; font-size: 13px; }
 
     .success-msg {
       display: none;
@@ -352,11 +273,15 @@
         </div>
 
         <div class="form-group full">
-          <label>Post matni (HTML) *</label>
-          <textarea id="content" placeholder="&lt;p&gt;Post matnini shu yerga yozing...&lt;/p&gt;
+          <label>Post matni *</label>
+          <textarea id="content" placeholder="Oddiy matn yozing...
 
-&lt;h2&gt;Sarlavha&lt;/h2&gt;
-&lt;p&gt;Paragraf matni...&lt;/p&gt;"></textarea>
+Yangi qator = yangi paragraf
+
+## Sarlavha uchun ## belgisini ishlating
+### Kichik sarlavha uchun ### belgisini ishlating
+- Ro'yxat uchun - belgisini ishlating"></textarea>
+          <p class="hint">💡 Oddiy matn yozing. ## sarlavha, - ro'yxat, bo'sh qator = yangi paragraf</p>
         </div>
       </div>
 
@@ -377,8 +302,8 @@
           <ol>
             <li>Yuqoridagi kodni <strong>nusxalab oling</strong></li>
             <li>GitHub'da <code>js/posts.js</code> faylini oching</li>
-            <li>Faylning boshida <code>const blogPosts = [</code> dan keyin <code>{</code> dan oldin yangi kod blokini qo'shing</li>
-            <li>Faylni saqlang (Commit changes)</li>
+            <li><code>const blogPosts = [</code> qatoridan keyin, birinchi <code>{</code> dan oldin yangi kodni qo'shing</li>
+            <li><strong>Commit changes</strong> tugmasini bosing</li>
             <li>Vercel avtomatik yangilaydi ✅</li>
           </ol>
         </div>
@@ -393,7 +318,6 @@
   <script>
     const PASSWORD = 'texno2026';
 
-    // Bugungi sanani avtomatik o'rnatish
     document.getElementById('date').value = new Date().toISOString().split('T')[0];
 
     function login() {
@@ -414,19 +338,57 @@
       document.getElementById('admin-panel').style.display = 'none';
     }
 
-    // Sessiya tekshirish
     if (sessionStorage.getItem('admin-auth') === 'true') {
       document.getElementById('login-screen').style.display = 'none';
       document.getElementById('admin-panel').style.display = 'block';
     }
 
     function slugify(text) {
-      return text
-        .toLowerCase()
+      return text.toLowerCase()
         .replace(/[^a-z0-9\s-]/g, '')
         .replace(/\s+/g, '-')
         .replace(/-+/g, '-')
         .trim();
+    }
+
+    // Oddiy matnni HTML ga o'girish
+    function textToHtml(text) {
+      const lines = text.split('\n');
+      let html = '';
+      let inList = false;
+
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+
+        if (!line) {
+          if (inList) { html += '</ul>\n      '; inList = false; }
+          continue;
+        }
+
+        // ## Katta sarlavha
+        if (line.startsWith('## ')) {
+          if (inList) { html += '</ul>\n      '; inList = false; }
+          html += `<h2>${line.slice(3)}</h2>\n      `;
+        }
+        // ### Kichik sarlavha
+        else if (line.startsWith('### ')) {
+          if (inList) { html += '</ul>\n      '; inList = false; }
+          html += `<h3>${line.slice(4)}</h3>\n      `;
+        }
+        // - Ro'yxat
+        else if (line.startsWith('- ')) {
+          if (!inList) { html += '<ul>\n        '; inList = true; }
+          html += `<li>${line.slice(2)}</li>\n        `;
+        }
+        // Oddiy paragraf
+        else {
+          if (inList) { html += '</ul>\n      '; inList = false; }
+          html += `<p>${line}</p>\n      `;
+        }
+      }
+
+      if (inList) html += '</ul>';
+      return html.trim();
     }
 
     function generateCode() {
@@ -444,6 +406,7 @@
       }
 
       const slug = slugify(title);
+      const htmlContent = textToHtml(content);
 
       const code = `  {
     slug: '${slug}',
@@ -454,7 +417,7 @@
     readTime: '${readTime}',
     image: '${image || 'images/default.jpg'}',
     content: \`
-      ${content}
+      ${htmlContent}
     \`
   },`;
 
@@ -471,7 +434,6 @@
       const btn = document.getElementById('copy-btn');
       btn.textContent = '✅ Nusxalandi!';
       btn.classList.add('copied');
-
       document.getElementById('success-msg').style.display = 'block';
 
       setTimeout(() => {
