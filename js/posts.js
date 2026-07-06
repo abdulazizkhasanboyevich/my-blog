@@ -88,7 +88,7 @@ const blogPosts = [
     content: `
       <p>Bugungi kunda sun'iy intellekt (AI) texnologiyalari hayotimizning barcha sohalariga kirib kelmoqda. Bu o'zgarish nafaqat texnologiya sohasini, balki ish bozori, ta'lim va jamiyatni ham tubdan o'zgartirmoqda.</p>
       <h2>AI ish bozorida nima o'zgartirmoqda?</h2>
-      <p>So'nggi yillarda AI ko'plab oddiy va takroriy ishlarni avtomatlashtirdi. Bugungi mutaxassis ertaga AI bilan raqobatlashishi mumkin. Lekin bu faqat xavf emas ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ yangi imkoniyatlar ham yaratmoqda.</p>
+      <p>So'nggi yillarda AI ko'plab oddiy va takroriy ishlarni avtomatlashtirdi. Bugungi mutaxassis ertaga AI bilan raqobatlashishi mumkin. Lekin bu faqat xavf emas  yangi imkoniyatlar ham yaratmoqda.</p>
       <ul>
         <li>Dasturchilar AI yordamida 10 barobar tezroq kod yozmoqda</li>
         <li>Dizaynerlar AI orqali daqiqalar ichida professional dizayn yaratmoqda</li>
@@ -96,7 +96,7 @@ const blogPosts = [
         <li>Tahlilchilar katta ma'lumotlarni AI yordamida tezroq qayta ishlamoqda</li>
         </ul>
       <h2>Raqobatbardosh bo'lish uchun nima qilish kerak?</h2>
-      <p>AI davrida muvaffaqiyatli bo'lish uchun bir narsani tushunish kerak ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ AI sizning o'rningizni emas, AI ishlatadigan odam sizning o'rningizni egallaydi.</p>
+      <p>AI davrida muvaffaqiyatli bo'lish uchun bir narsani tushunish kerak ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ AI sizning o'rningizni emas, AI ishlatadigan odam sizning o'rningizni egallaydi.</p>
       <h3>Zarur ko'nikmalar</h3>
       <ul>
         <li>AI toollarini o'rganish va ulardan samarali foydalanish</li>
@@ -105,7 +105,7 @@ const blogPosts = [
         <li>Yangi texnologiyalarga tez moslashish</li>
         </ul>
       <h2>Xulosa</h2>
-      <p>AI davri qo'rqinchli emas ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ u yangi imkoniyatlar davri. Vibe coding, AI yordamchi dasturlar va zamonaviy toollarni o'rganish orqali siz ham bu o'zgarishdan foyda olishingiz mumkin. Muhimi ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ o'rganishni to'xtatmaslik!</p>
+      <p>AI davri qo'rqinchli emas  u yangi imkoniyatlar davri. Vibe coding, AI yordamchi dasturlar va zamonaviy toollarni o'rganish orqali siz ham bu o'zgarishdan foyda olishingiz mumkin. Muhimi ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ o'rganishni to'xtatmaslik!</p>
     `
   },
   {
@@ -117,12 +117,12 @@ const blogPosts = [
     readTime: '5 min read',
     image: 'https://miro.medium.com/0*vOaWDgTmVpMfi9ws',
     content: `
-      <p>We've all been there ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ staring at a tangled mess of logic, convinced the solution needs to be complex because the problem feels complex. But more often than not, the clearest code comes from the simplest mental model.</p>
+      <p>We've all been there ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ staring at a tangled mess of logic, convinced the solution needs to be complex because the problem feels complex. But more often than not, the clearest code comes from the simplest mental model.</p>
 
       <h2>Start with the question, not the answer</h2>
       <p>Before writing a single line, ask yourself: what is this code actually trying to accomplish? Strip away the implementation details and describe the goal in plain language. If you can't explain it simply, you don't understand it well enough yet.</p>
 
-      <blockquote>The best code reads like well-written prose ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ each function has a clear purpose, and the flow is obvious to anyone who picks it up.</blockquot
+      <blockquote>The best code reads like well-written prose ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ each function has a clear purpose, and the flow is obvious to anyone who picks it up.</blockquot
 
       <h2>Embrace small functions</h2>
       <p>Large functions are tempting because they keep everything in one place. But they hide complexity. A function that does one thing well is easier to test, easier to name, and easier to reuse.</p>
@@ -136,7 +136,7 @@ const blogPosts = [
       <h2>Delete with confidence</h2>
       <p>Some of the best refactoring sessions end with less code than you started with. Dead code, over-abstractions, and "just in case" branches add noise. If you're not sure something is needed, try removing it. Version control has your back.</p>
 
-      <p>Clarity isn't about writing less ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ it's about making every line earn its place on the screen.</p>
+      <p>Clarity isn't about writing less ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ it's about making every line earn its place on the screen.</p>
     `
   }
 ];
