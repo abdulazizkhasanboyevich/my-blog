@@ -11,14 +11,14 @@ const blogPosts = [
       <p>2026-yilgi Jahon chempionatida AI ikki joyda ishlayapti. Birini hamma ko'radi: u maydonda ofsaydni aniqlashga yordam beradi. Ikkinchisi esa stadion atrofida ishlaydi: u odamlarni kuzatadi.</p>
       <p>Birinchisi futbolni adolatliroq qilishi mumkin. Ikkinchisi esa bizdan jiddiy savol so'raydi: texnologiya bizga xizmat qilyaptimi yoki bizni nazorat qilyaptimi?</p>
       <p>Gap AI yaxshi yoki yomonligida emas. Gap u qanday joyda, qanday qoida bilan va kimning foydasiga ishlatilayotganida.</p>
-      <h1>Ofsaydni ko'radigan AI</h1>
+      <h2>Ofsaydni ko'radigan AI</h2>
       <p>Tasavvur qiling: hujumchi himoya chizig'idan yugurib o'tdi. To'p uzatildi. Ofsayd bormi yoki yo'qmi?</p>
       <p>Buni oddiy ko'z bilan ko'rish juda qiyin. Ba'zan farq yelka kengligichalik bo'ladi. Futbolchi to'liq tezlikda yuguryapti, himoyachi ham harakatda, to'p ham bir lahzada uzatiladi.</p>
       <p>Shu joyda AI hakamga yordam beradi. Turnir oldidan futbolchilarning tanasi 3D-skanerdan o'tkaziladi. Tizim to'p uzatilgan paytdagi kadrni oladi, futbolchining tana modelini joylashtiradi va qaysi qismi oldinda bo'lganini tekshiradi. Keyin xulosani to'g'ridan-to'g'ri maydondagi hakamga yuboradi.</p>
       <p>To'p ichidagi Trionda chipi harakatni soniyasiga 500 marta o'qiydi. VAR kameralari esa futbolchi tanasidagi 29 ta nuqtani soniyasiga 50 marta kuzatadi.</p>
       <p>Oddiy qilib aytganda, AI ko'z ilg'amaydigan mayda farqni ushlab beradi. Lekin oxirgi qaror baribir hakamniki.</p>
       <p>Mana shu yerda muhim farq bor. Bu AI odam o'rniga hukm chiqarayotgani yo'q. U hakamga aniqroq ko'rishga yordam beryapti.</p>
-      <h1>Yaxshi AI qanday bo'ladi?</h1>
+      <h2>Yaxshi AI qanday bo'ladi?</h2>
       <p>Men AI haqida gapirganda doim bitta qoidani takrorlayman: yaxshi AI tor vazifani bajaradi, natijasini tekshirish mumkin bo'ladi va oxirgi javobgarlik odamda qoladi.</p>
       <p>Ofsayd tizimi shu uchta talabdan o'tadi.</p>
       <p>Birinchidan, vazifa juda aniq. Futbolchining tanasi to'p uzatilgan paytda ofsaydda edimi yoki yo'qmi?</p>
@@ -27,7 +27,7 @@ const blogPosts = [
       <p>Shu sababli bunday AI xavfli emas. Aksincha, u odamning ishini kuchaytiradi.</p>
       <p>Hatto barcha 48 ta jamoaga bir xil generativ AI tahlilchisi berilishi ham qiziq. Boy jamoa ham, kambag'al jamoa ham bir xil taktik yordamdan foydalanadi. Bu yerda texnologiya mahoratni almashtirmaydi. U mahoratni o'tkirlashtiradi.</p>
       <p>Agar Jahon chempionatidagi AI hikoyasi shu yerda tugaganida, men bundan xavotir olmasdim. Lekin hikoya bu bilan tugamaydi.</p>
-      <h1>Stadion atrofidagi boshqa AI</h1>
+      <h2>Stadion atrofidagi boshqa AI</h2>
       <p>Xuddi shu turnirda ikkinchi AI ham ishlayapti. U maydonda emas. U stadion atrofida.</p>
       <p>Bu tizim yuzni taniydigan kameralar, AI boshqaradigan dronlar va robot itlardan iborat. AQSh hukumati Jahon chempionati xavfsizlik texnologiyalari uchun 365 million dollar ajratgan. Boston, Mayami va Atlanta stadionlariga kirishda, hatto ayrim to'lovlarda ham yuzni skanerlash ishlatilmoqda.</p>
       <p>Tadqiqotchilar buni sport tarixidagi eng katta fuqarolik AI kuzatuv tizimlaridan biri deb atashyapti.</p>
@@ -35,7 +35,7 @@ const blogPosts = [
       <p>Eng katta muammo bitta joyda ko'rinadi. Yig'ilgan biometrik ma'lumotlar qachon o'chirilishi haqida aniq qoida yo'q.</p>
       <p>Biometrik ma'lumot degani nima? Bu yuzingiz, ko'zingiz, barmoq izingiz yoki tanangizga bog'liq shaxsiy belgilardir.</p>
       <p>Sodda qilib aytganda, ular yuzingizni skaner qiladi. Lekin bu ma'lumot qayerda turadi, kim ko'radi, qachon o'chadi yoki umuman o'chadimi - aniq javob yo'q.</p>
-      <h1>Ikkalasi bir xil emas</h1>
+      <h2>Ikkalasi bir xil emas</h2>
       <p>Endi ofsayd tizimiga bergan savollarimizni shu kuzatuv tizimiga berib ko'raylik.</p>
       <p>Vazifa tor va aniqmi? Yo'q. "Hamma joyda hammani kuzatish" tor vazifa emas.</p>
       <p>Natijani tekshirish uchun aniq mezon bormi? Yo'q. Ofsaydda chiziq bor. Kuzatuvda esa ko'p narsa mavhum.</p>
@@ -52,7 +52,7 @@ const blogPosts = [
       <p>Qatardagi 2022-yilgi Jahon chempionatida 15 mingdan ortiq kamera o'rnatilgan edi. Ularning ko'pi bugun ham ishlayapti.</p>
       <p>Ofsayd chizig'i o'yin tugaganda yo'qoladi. Kameralar tarmog'i esa qoladi.</p>
       <p>Ko'pchilik ko'rmayotgan kelishuv mana shu. Sizga tezroq ofsayd qarori beriladi. Lekin evaziga shaharga doimiy kuzatuv infratuzilmasi ham kirib keladi.</p>
-      <h1>Vijdon boshqa, kamera boshqa</h1>
+      <h2>Vijdon boshqa, kamera boshqa</h2>
       <p>Yillar oldin Kent universitetida qiziq tajriba o'tkazilgan. Bolalarga ularni ko'rinmas malika Alisa kuzatib turgani aytilgan. Shundan keyin ular kamroq aldashgan.</p>
       <p>Men buni oldin ham misol qilib keltirganman. Agar odam ichidan "meni hech kim ko'rmasa ham Xudo ko'rib turibdi" deb ishonsa, u o'zini tiyadi. Bu kuzatuv odamning ichida yashaydi. U vijdon orqali ishlaydi.</p>
       <p>Lekin kamera boshqa narsa. Kamera sizni ichingizdan to'g'rilamaydi. U sizni tashqaridan qo'rqitadi.</p>
@@ -68,7 +68,7 @@ const blogPosts = [
       <p>Ikkinchi savol: uning qarori uchun javobgar odam bormi?</p>
       <p>Agar javob "ha" bo'lsa, bu foydali qurol bo'lishi mumkin. Agar javob "yo'q" bo'lsa, ehtiyot bo'ling.</p>
       <p>Chunki u sizga xizmat qilmayotgan bo'lishi mumkin. Balki siz unga xizmat qilayotgandirsiz.</p>
-      <h1>Xulosa</h1>
+      <h2>Xulosa</h2>
       <p>2026-yilgi Jahon chempionati chiroyli futbol, tezkor qarorlar va aniqroq ofsayd tizimi bilan esda qolishi mumkin. Bu yaxshi yangilik.</p>
       <p>Lekin u yana boshqa narsa bilan ham esda qolishi mumkin: kuzatuv tizimi uning eng katta merosiga aylanishi mumkin. Bu esa yaxshi yangilik emas.</p>
       <p>Futbolni tomosha qiling. Texnologiyadan foydalaning. Lekin bayram tugagandan keyin shahar ko'chalarida nima qolishini ham kuzating.</p>
