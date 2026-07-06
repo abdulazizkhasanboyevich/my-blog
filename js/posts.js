@@ -43,7 +43,7 @@ const blogPosts = [
       <p>Demak, birinchi AI uchta sinovdan o'tadi. Ikkinchi AI esa uchalasidan ham yiqiladi.</p>
       <p>Shu sababli "AI futbolga keldi" degan gapning o'zi yetarli emas. Qaysi AI? Qayerda? Kimni kuchaytiryapti? Kimni nazorat qilyapti?</p>
       <p>Mana asosiy savollar shu.</p>
-      <h1>AI bor narsani kuchaytiradi</h1>
+      <h2>AI bor narsani kuchaytiradi</h2>
       <p>AI buzilgan tizimni o'z-o'zidan tuzatmaydi. U bor narsani tezlashtiradi.</p>
       <p>Agar tizim aniq, cheklangan va javobgar bo'lsa, AI uni yaxshilashi mumkin. Agar tizim noaniq, cheksiz va javobgarsiz bo'lsa, AI shu muammoni ham kattalashtiradi.</p>
       <p>Jahon chempionati milliardlab odamlar ko'radigan bayram. Futbol, muxlislar, stadionlar, hayajon.</p>
@@ -59,7 +59,7 @@ const blogPosts = [
       <p>Vijdon odamni halollikka chaqiradi. Kuzatuv tizimi esa odamni itoatkor qiladi.</p>
       <p>Vijdon xatodan keyin tavba qilishga joy qoldiradi. Kamera esa yozuvni saqlab qo'yadi.</p>
       <p>Shuning uchun "ikkalasi ham kuzatadi-ku" deb ularni aralashtirib yubormaslik kerak. Ichki kuzatuv odamni tarbiyalaydi. Tashqi nazorat esa odamni boshqaradi.</p>
-      <h1>Oddiy odam nima qilishi kerak?</h1>
+      <h2>Oddiy odam nima qilishi kerak?</h2>
       <p>Men texnologiyadan voz kechish kerak demoqchi emasman. Bu ham noto'g'ri.</p>
       <p>Yaxshi texnologiyani ishlatish kerak. Lekin har bir texnologiyani bir xil qabul qilmaslik kerak.</p>
       <p>Sizga xizmat qiladiganini oling. Sizni nazorat qiladiganiga esa savol bering.</p>
