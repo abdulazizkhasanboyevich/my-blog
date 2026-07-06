@@ -96,7 +96,8 @@ const blogPosts = [
         <li>Tahlilchilar katta ma'lumotlarni AI yordamida tezroq qayta ishlamoqda</li>
         </ul>
       <h2>Raqobatbardosh bo'lish uchun nima qilish kerak?</h2>
-      <p>AI davrida muvaffaqiyatli bo'lish uchun bir narsani tushunish kerak ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ AI sizning o'rningizni emas, AI ishlatadigan odam sizning o'rningizni egallaydi.</p>
+      <p>AI davrida muvaffaqiyatli bo'lish uchun bir narsani tushunish kerak 
+AI sizning o'rningizni emas, AI ishlatadigan odam sizning o'rningizni egallaydi.</p>
       <h3>Zarur ko'nikmalar</h3>
       <ul>
         <li>AI toollarini o'rganish va ulardan samarali foydalanish</li>
@@ -105,7 +106,7 @@ const blogPosts = [
         <li>Yangi texnologiyalarga tez moslashish</li>
         </ul>
       <h2>Xulosa</h2>
-      <p>AI davri qo'rqinchli emas  u yangi imkoniyatlar davri. Vibe coding, AI yordamchi dasturlar va zamonaviy toollarni o'rganish orqali siz ham bu o'zgarishdan foyda olishingiz mumkin. Muhimi ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ o'rganishni to'xtatmaslik!</p>
+      <p>AI davri qo'rqinchli emas  u yangi imkoniyatlar davri. Vibe coding, AI yordamchi dasturlar va zamonaviy toollarni o'rganish orqali siz ham bu o'zgarishdan foyda olishingiz mumkin. Muhimi o'rganishni to'xtatmaslik!</p>
     `
   },
   {
