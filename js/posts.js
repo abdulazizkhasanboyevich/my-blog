@@ -84,7 +84,7 @@ const blogPosts = [
     category: 'IT',
     date: '2026-06-17',
     readTime: '5 daqiqa oqish',
-    image: 'https://www.sirtbhopal.ac.in/assets/images/blogs/new-era-of-artificial-intelligence-leading-from-transformation-of-industries-to-empowering-people.webp',
+    image: 'https://images.pexels.com/photos/32021560/pexels-photo-32021560.jpeg',
     content: `
       <p>Bugungi kunda sun'iy intellekt (AI) texnologiyalari hayotimizning barcha sohalariga kirib kelmoqda. Bu o'zgarish nafaqat texnologiya sohasini, balki ish bozori, ta'lim va jamiyatni ham tubdan o'zgartirmoqda.</p>
       <h2>AI ish bozorida nima o'zgartirmoqda?</h2>
