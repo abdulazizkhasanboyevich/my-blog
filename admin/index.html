@@ -347,7 +347,7 @@ Bo'sh qator = yangi paragraf"></textarea>
         body: JSON.stringify({ title, excerpt, category, date, readTime, image, content })
       });
 
-      showStatus('new-status', 'success', `✅ "${title}" posti muvaffaqiyatli yuklandi! Vercel 1-2 daqiqada yangilaydi.`);
+      showStatus('new-status', 'success', `✅ "${title}" posti muvaffaqiyatli yuklandi!`);
       document.getElementById('title').value = '';
       document.getElementById('excerpt').value = '';
       document.getElementById('category').value = '';
@@ -479,7 +479,7 @@ Bo'sh qator = yangi paragraf"></textarea>
 
       currentPosts = currentPosts.filter(p => p.slug !== deletingSlug);
       renderPostsList();
-      showStatus('manage-status', 'success', `✅ Post o'chirildi! Vercel 1-2 daqiqada yangilaydi.`);
+      showStatus('manage-status', 'success', `✅ Post o'chirildi!`);
       closeDeleteModal();
     } catch (err) {
       showStatus('delete-status', 'error', `❌ Xato: ${err.message}`);
