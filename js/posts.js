@@ -1,5 +1,17 @@
 const blogPosts = [
   {
+    slug: 'bbb',
+    title: 'BBB',
+    excerpt: 'gegeg',
+    category: 'rge',
+    date: '2026-07-09',
+    readTime: '5 min read',
+    image: 'images/default.jpg',
+    content: `
+      <p>ERGergergergegergege</p>
+    `
+  },
+  {
     slug: 'jahon-chempionatidagi-ikki-ai-biri-yordam-beradi-biri-kuzatadi',
     title: 'Jahon chempionatidagi ikki AI: biri yordam beradi, biri kuzatadi',
     excerpt: '2026 Jahon chempionatida AI ofsaydni aniqroq qiladi, lekin stadion atrofidagi kuzatuv boshqa savollarni ham ochadi.',
