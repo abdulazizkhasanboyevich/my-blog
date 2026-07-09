@@ -110,10 +110,8 @@
     <h1>🔐 Admin Panel</h1>
     <p>Texnoblog boshqaruv paneli</p>
     <input type="password" id="admin-pass" placeholder="Admin paroli..." onkeydown="if(event.key==='Enter') login()">
-    <p class="token-hint">GitHub Personal Access Token:</p>
-    <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxx..." onkeydown="if(event.key==='Enter') login()">
-    <button class="btn-primary" onclick="login()">Kirish</button>
-    <p class="error-msg" id="error-msg">❌ Parol yoki token noto'g'ri!</p>
+    <button class="btn-primary" id="login-btn" onclick="login()">Kirish</button>
+    <p class="error-msg" id="error-msg">❌ Parol noto'g'ri!</p>
   </div>
 </div>
 
@@ -246,40 +244,65 @@ Bo'sh qator = yangi paragraf"></textarea>
 </div>
 
 <script>
-  const PASSWORD = 'texno2026';
-  const REPO = 'abdulazizkhasanboyevich/my-blog';
-  const FILE_PATH = 'js/posts.js';
-  let ghToken = '';
+  let sessionToken = '';
   let currentPosts = [];
-  let currentSha = '';
   let editingSlug = '';
   let deletingSlug = '';
 
   document.getElementById('date').value = new Date().toISOString().split('T')[0];
 
-  function login() {
+  async function login() {
     const pass = document.getElementById('admin-pass').value;
-    const token = document.getElementById('gh-token').value.trim();
-    if (pass === PASSWORD && token) {
-      ghToken = token;
-      sessionStorage.setItem('admin-auth', 'true');
-      sessionStorage.setItem('gh-token', token);
+    const btn = document.getElementById('login-btn');
+    const errorMsg = document.getElementById('error-msg');
+    errorMsg.style.display = 'none';
+    btn.disabled = true;
+    btn.textContent = 'Tekshirilmoqda...';
+    try {
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: pass })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Xato');
+
+      sessionToken = data.token;
+      sessionStorage.setItem('admin-token', sessionToken);
       document.getElementById('login-screen').style.display = 'none';
       document.getElementById('admin-panel').style.display = 'block';
-    } else {
-      document.getElementById('error-msg').style.display = 'block';
+    } catch (err) {
+      errorMsg.style.display = 'block';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Kirish';
     }
   }
 
   function logout() {
     sessionStorage.clear();
-    ghToken = '';
+    sessionToken = '';
     document.getElementById('login-screen').style.display = 'flex';
     document.getElementById('admin-panel').style.display = 'none';
   }
 
-  if (sessionStorage.getItem('admin-auth') === 'true') {
-    ghToken = sessionStorage.getItem('gh-token') || '';
+  function authFetch(url, options = {}) {
+    options.headers = Object.assign({}, options.headers, {
+      Authorization: `Bearer ${sessionToken}`
+    });
+    return fetch(url, options).then(async res => {
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        if (res.status === 401) logout();
+        throw new Error(data.error || 'Xato yuz berdi');
+      }
+      return data;
+    });
+  }
+
+  const storedToken = sessionStorage.getItem('admin-token');
+  if (storedToken) {
+    sessionToken = storedToken;
     document.getElementById('login-screen').style.display = 'none';
     document.getElementById('admin-panel').style.display = 'block';
   }
@@ -292,59 +315,11 @@ Bo'sh qator = yangi paragraf"></textarea>
     if (tab === 'manage-posts') loadPosts();
   }
 
-  function slugify(text) {
-    return text.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim();
-  }
-
-  function textToHtml(text) {
-    const lines = text.split('\n');
-    let html = '';
-    let inList = false;
-    for (let line of lines) {
-      line = line.trim();
-      if (!line) { if (inList) { html += '</ul>\n      '; inList = false; } continue; }
-      if (line.startsWith('## ')) {
-        if (inList) { html += '</ul>\n      '; inList = false; }
-        html += `<h2>${line.slice(3)}</h2>\n      `;
-      } else if (line.startsWith('### ')) {
-        if (inList) { html += '</ul>\n      '; inList = false; }
-        html += `<h3>${line.slice(4)}</h3>\n      `;
-      } else if (line.startsWith('- ')) {
-        if (!inList) { html += '<ul>\n        '; inList = true; }
-        html += `<li>${line.slice(2)}</li>\n        `;
-      } else {
-        if (inList) { html += '</ul>\n      '; inList = false; }
-        html += `<p>${line}</p>\n      `;
-      }
-    }
-    if (inList) html += '</ul>';
-    return html.trim();
-  }
-
   function showStatus(id, type, msg) {
     const box = document.getElementById(id);
     box.style.display = 'block';
     box.className = 'status-box status-' + type;
     box.innerHTML = type === 'loading' ? `<span class="spinner"></span>${msg}` : msg;
-  }
-
-  async function getFileFromGitHub() {
-    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`, {
-      headers: { 'Authorization': `token ${ghToken}`, 'Accept': 'application/vnd.github.v3+json' }
-    });
-    if (!res.ok) throw new Error('GitHub dan fayl olinmadi');
-    const data = await res.json();
-    currentSha = data.sha;
-    return atob(data.content.replace(/\n/g, ''));
-  }
-
-  async function saveFileToGitHub(content, message) {
-    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`, {
-      method: 'PUT',
-      headers: { 'Authorization': `token ${ghToken}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message, content: btoa(unescape(encodeURIComponent(content))), sha: currentSha })
-    });
-    if (!res.ok) { const e = await res.json(); throw new Error(e.message); }
   }
 
   // ========= YANGI POST =========
@@ -363,19 +338,14 @@ Bo'sh qator = yangi paragraf"></textarea>
     }
 
     document.getElementById('publish-btn').disabled = true;
-    showStatus('new-status', 'loading', 'GitHub\'dan fayl o\'qilmoqda...');
+    showStatus('new-status', 'loading', 'Saytga yuklanmoqda...');
 
     try {
-      const currentContent = await getFileFromGitHub();
-      showStatus('new-status', 'loading', 'Yangi post qo\'shilmoqda...');
-
-      const slug = slugify(title);
-      const htmlContent = textToHtml(content);
-      const newPost = `  {\n    slug: '${slug}',\n    title: '${title.replace(/'/g, "\\'")}',\n    excerpt: '${excerpt.replace(/'/g, "\\'")}',\n    category: '${category}',\n    date: '${date}',\n    readTime: '${readTime}',\n    image: '${image || 'images/default.jpg'}',\n    content: \`\n      ${htmlContent}\n    \`\n  },\n`;
-
-      const updatedContent = currentContent.replace('const blogPosts = [\n', `const blogPosts = [\n${newPost}`);
-      showStatus('new-status', 'loading', 'Saytga yuklanmoqda...');
-      await saveFileToGitHub(updatedContent, `Yangi post: ${title}`);
+      await authFetch('/api/posts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title, excerpt, category, date, readTime, image, content })
+      });
 
       showStatus('new-status', 'success', `✅ "${title}" posti muvaffaqiyatli yuklandi! Vercel 1-2 daqiqada yangilaydi.`);
       document.getElementById('title').value = '';
@@ -395,13 +365,8 @@ Bo'sh qator = yangi paragraf"></textarea>
   async function loadPosts() {
     document.getElementById('posts-list').innerHTML = '<div class="loading-posts">⏳ Postlar yuklanmoqda...</div>';
     try {
-      const content = await getFileFromGitHub();
-      const match = content.match(/const blogPosts = \[([\s\S]*?)\];\s*\n\nfunction/);
-      if (!match) throw new Error('Postlar topilmadi');
-
-      // Postlarni eval bilan yuklaymiz
-      const fn = new Function(`const blogPosts = [${match[1]}]; return blogPosts;`);
-      currentPosts = fn();
+      const data = await authFetch('/api/posts');
+      currentPosts = data.posts;
       renderPostsList();
     } catch (err) {
       document.getElementById('posts-list').innerHTML = `<div class="loading-posts">❌ Xato: ${err.message}</div>`;
@@ -470,16 +435,17 @@ Bo'sh qator = yangi paragraf"></textarea>
     showStatus('edit-status', 'loading', 'Saqlanmoqda...');
 
     try {
-      const fileContent = await getFileFromGitHub();
-      const updatedPosts = currentPosts.map(p => {
-        if (p.slug !== editingSlug) return p;
-        return { ...p, title, excerpt, category, date, readTime, image, content: `\n      ${content}\n    ` };
+      await authFetch('/api/posts', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug: editingSlug, title, excerpt, category, date, readTime, image, content })
       });
 
-      const newFileContent = rebuildPostsJs(fileContent, updatedPosts);
-      await saveFileToGitHub(newFileContent, `Post tahrirlandi: ${title}`);
-
-      currentPosts = updatedPosts;
+      currentPosts = currentPosts.map(p =>
+        p.slug === editingSlug
+          ? { ...p, title, excerpt, category, date, readTime, image, content: `\n      ${content}\n    ` }
+          : p
+      );
       renderPostsList();
       showStatus('edit-status', 'success', '✅ Post muvaffaqiyatli saqlandi!');
       setTimeout(() => closeEditModal(), 1500);
@@ -508,13 +474,10 @@ Bo'sh qator = yangi paragraf"></textarea>
     showStatus('delete-status', 'loading', 'O\'chirilmoqda...');
 
     try {
-      const fileContent = await getFileFromGitHub();
       const deletedPost = currentPosts.find(p => p.slug === deletingSlug);
-      const updatedPosts = currentPosts.filter(p => p.slug !== deletingSlug);
-      const newFileContent = rebuildPostsJs(fileContent, updatedPosts);
-      await saveFileToGitHub(newFileContent, `Post o'chirildi: ${deletedPost?.title}`);
+      await authFetch(`/api/posts?slug=${encodeURIComponent(deletingSlug)}`, { method: 'DELETE' });
 
-      currentPosts = updatedPosts;
+      currentPosts = currentPosts.filter(p => p.slug !== deletingSlug);
       renderPostsList();
       showStatus('manage-status', 'success', `✅ Post o'chirildi! Vercel 1-2 daqiqada yangilaydi.`);
       closeDeleteModal();
@@ -523,17 +486,6 @@ Bo'sh qator = yangi paragraf"></textarea>
     } finally {
       document.getElementById('confirm-delete-btn').disabled = false;
     }
-  }
-
-  // ========= FAYL QAYTA YOZISH =========
-  function rebuildPostsJs(originalContent, posts) {
-    const postsCode = posts.map(p => {
-      return `  {\n    slug: '${p.slug}',\n    title: '${p.title.replace(/'/g, "\\'")}',\n    excerpt: '${p.excerpt.replace(/'/g, "\\'")}',\n    category: '${p.category}',\n    date: '${p.date}',\n    readTime: '${p.readTime}',\n    image: '${p.image}',\n    content: \`${p.content}\`\n  }`;
-    }).join(',\n');
-
-    const functionsMatch = originalContent.match(/\];\s*\n\nfunction[\s\S]*/);
-    const functions = functionsMatch ? functionsMatch[0] : '\n];\n';
-    return `const blogPosts = [\n${postsCode}\n${functions}`;
   }
 </script>
 </body>
