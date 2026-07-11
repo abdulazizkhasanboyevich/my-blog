@@ -37,6 +37,8 @@ const blogPosts = [
       <p>Texnologik ekotizimning ushbu transformatsiyasi sharoitida har birimiz uzoq muddatli rejalarni qayta ko’rib chiqishimiz kerak.</p>
       <p>To‘rtinchidan, internet arxitekturasi o‘zgaradi va kliklar inqirozi chuqurlashadi. Google o‘z qidiruv tizimiga AI integratsiyasini joriy qilgandan so‘ng, an’anaviy saytlarga o‘tuvchi kliklar soni deyarli 39.8 foizga kamaydi. Dotatsiyalarsiz yashashga majbur bo‘lgan AI qidiruv tizimlari foydalanuvchini o‘z platformasida ushlab qolish uchun hamma javobni tayyor holda beradi. Natijada original kontent yaratuvchi saytlar trafiksiz va daromadsiz qoladi, bu esa reklama modeliga asoslangan butun boshli internet iqtisodiyotining poydevorini silkitadi. Bunga javoban, bozor bulutli hisoblashlardan qochib, smartfon va noutbuklarning o‘zida, ya’ni mahalliy chiplarda ishlaydigan kichik, ammo optimallashgan modellarga (On-device AI) e’tibor qaratadi.</p>
       <p>Ushbu o‘zgaruvchan o‘yin qoidalarida biznes va foydalanuvchilar hozirdan strategik bog‘liqlikni kamaytirishlari shart. Jarayonlarni faqatgina bitta AI provayderining joriy narxlariga tayanib qurishdan qochish, Llama yoki Mistral kabi ochiq kodli (open-source) muqobil variantlarni shaxsiy serverlarda ishga tushirishni o‘rganish va AI berayotgan real samaradorlik uning bo‘lajak pullik obuna narxini oqlash-oqlamasligini hozirdan hisob-kitob qilish lozim. Venchur kapitali hisobidan moliyalashtirilgan bayram yakuniga yetmoqda, oldinda bizni sun’iy intellektning real iqtisodiy qonunlar asosida ishlaydigan, ancha pragmatik va jiddiy xarajatlar talab qiladigan davri kutmoqda.</p>
+
+Manba: Pivot
     `
   },
   {
