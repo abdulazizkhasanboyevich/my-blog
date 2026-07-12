@@ -42,7 +42,7 @@ module.exports = async (req, res) => {
         category,
         date,
         readTime: readTime || '',
-        image: image || 'images/default.jpg',
+        image: image || '/og-image.png',
         content: `\n      ${textToHtml(rawContent)}\n    `
       };
 
