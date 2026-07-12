@@ -82,6 +82,27 @@
     container.innerHTML = sorted.map(createPostCard).join('');
   }
 
+  function updateMetaTags(post) {
+    const setMeta = (selector, attr, value) => {
+      const el = document.querySelector(selector);
+      if (el) el.setAttribute(attr, value);
+    };
+    const pageUrl = `https://texnoblog.vercel.app/post.html?slug=${post.slug}`;
+    const imageUrl = post.image && post.image.startsWith('http')
+      ? post.image
+      : `https://texnoblog.vercel.app/${post.image || 'og-image.png'}`;
+
+    setMeta('meta[name="description"]', 'content', post.excerpt);
+    setMeta('link[rel="canonical"]', 'href', pageUrl);
+    setMeta('meta[property="og:title"]', 'content', `${post.title} — Texnoblog`);
+    setMeta('meta[property="og:description"]', 'content', post.excerpt);
+    setMeta('meta[property="og:url"]', 'content', pageUrl);
+    setMeta('meta[property="og:image"]', 'content', imageUrl);
+    setMeta('meta[name="twitter:title"]', 'content', `${post.title} — Texnoblog`);
+    setMeta('meta[name="twitter:description"]', 'content', post.excerpt);
+    setMeta('meta[name="twitter:image"]', 'content', imageUrl);
+  }
+
   function initSinglePost() {
     const container = document.getElementById('post-content');
     if (!container) return;
@@ -98,11 +119,12 @@
           <a href="blog.html" class="hero__cta">Browse all posts</a>
         </div>
       `;
-      document.title = 'Post Not Found — My Blog';
+      document.title = 'Post Not Found — Texnoblog';
       return;
     }
 
-    document.title = `${post.title} — My Blog`;
+    document.title = `${post.title} — Texnoblog`;
+    updateMetaTags(post);
 
     container.innerHTML = `
       <article class="content-narrow">
